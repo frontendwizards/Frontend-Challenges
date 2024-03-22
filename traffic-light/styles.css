@@ -1,0 +1,29 @@
+body {
+  font-family: sans-serif;
+}
+
+.traffic-light-container {
+  background-color: black;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 1rem;
+}
+
+.traffic-light {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.traffic-light-container--vertical {
+  flex-direction: row;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
