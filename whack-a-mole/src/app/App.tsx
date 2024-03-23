@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { FC, useEffect, useRef, useState } from "react";
 
-const GAME_DURATION = 10;
+const GAME_DURATION = 35;
 
 const getRandomNumber = (
   min: number,
@@ -40,8 +40,18 @@ const App: FC = () => {
   };
 
   const respawnNewMoles = () => {
-    const firstMolePosition = getRandomNumber(0, 9, []);
-    const secondMolePosition = getRandomNumber(0, 9, [firstMolePosition]);
+    const currentMolePositions = gameGrid.reduce(
+      (savedMolePositions: number[], currentSpot, currentIndex) => {
+        if (currentSpot === 1) {
+          savedMolePositions.push(currentIndex);
+        }
+        return savedMolePositions;
+      },
+      [],
+    );
+
+    const firstMolePosition = getRandomNumber(0, 9, currentMolePositions);
+    const secondMolePosition = getRandomNumber(0, 9, [firstMolePosition, ...currentMolePositions]);
 
     const newGameGrid = [...DefaultGrid];
     newGameGrid[firstMolePosition] = 1;
@@ -64,7 +74,7 @@ const App: FC = () => {
       return;
     }
 
-    if (timer % 1.5 === 0) {
+    if (timer % 1 === 0) {
       respawnNewMoles();
     }
 
