@@ -20,8 +20,6 @@ export default function TrafficLight({ config, layout = "vertical" }) {
 
   return (
     <div
-      aria-live="polite"
-      aria-label={`Current light: ${currentLight}`}
       className={[
         "traffic-light-container",
         layout === "vertical" && "traffic-light-container--vertical",
