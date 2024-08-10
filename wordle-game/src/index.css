@@ -1,0 +1,55 @@
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(5, 4rem);
+}
+
+.container{
+  margin: 6rem 10rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column
+}
+
+.cell {
+  width: 4rem;
+  height: 4rem;
+  border: 2px solid #E2E3E6;
+  color: black;
+  font-size: 3rem;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition-duration: 1s;
+}
+
+.cell-filled {
+  color:white;
+  border-color: transparent;
+}
+
+.light-gray {
+  background-color: white;
+}
+
+.green {
+  background-color: #6aaa64;
+}
+
+.yellow {
+  background-color: #c9b458;
+}
+
+.dark-gray {
+  background-color: #787c7e;
+}
