@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import "./index.css";
 
+// TODO check same row?? duplicate
+// TODO remove updateData and only
+
 const WORDS = Object.freeze([
   "APPLE",
   "BEAST",
@@ -22,14 +25,12 @@ const ABSENT_CELL_COLOR = "dark-gray";
 const CORRECT_CELL_COLOR = "green";
 const PRESENT_CELL_COLOR = "yellow";
 
-// TODO
-const initialData = Array(tries)
-  .fill(null)
-  .map(() =>
-    Array(wordLength).fill({
+const generateInitialGridSate = () =>
+  Array.from({ length: tries }, () =>
+    Array.from({ length: wordLength }, () => ({
       value: null,
       bgClass: DEFAULT_CELL_COLOR,
-    })
+    }))
   );
 
 const Cell = ({ value, backgroundClass }) => {
@@ -59,20 +60,23 @@ const getCurrentWord = (currentRow) => {
   return result;
 };
 
-const copy = (data) => JSON.parse(JSON.stringify(data));
+const copy = (prevData) => {
+  const updatedData = prevData.map((row) => row.slice());
+  return updatedData;
+};
 
-const GAME_STATUS = {
+const GAME_STATUS = Object.freeze({
   WON: "Won",
   LOST: "Lost",
   PLAYING: "Playing",
-};
+});
 
 export default function App() {
   let [currentRow, setCurrentRow] = useState(0);
-  let [data, setData] = useState(copy(initialData));
+  let [data, setData] = useState(generateInitialGridSate());
   let [gameStatus, setGameStatus] = useState(GAME_STATUS.PLAYING);
-  const targetWord = WORDS[0];
   let [isColoring, setIsColoring] = useState(false);
+  const targetWord = WORDS[0];
 
   const updateData = (newData = data) => {
     console.log(newData[currentRow]);
@@ -133,6 +137,7 @@ export default function App() {
     }
 
     const newData = copy(data);
+    console.log({ currentWord });
     newData[currentRow][currentWord.length - 1].value = null;
     setData(newData);
   };
@@ -145,6 +150,9 @@ export default function App() {
     const typedKey = e.key;
 
     let currentWord = getCurrentWord(data[currentRow]);
+    if (typedKey === "Backspace") {
+      return removeLastCharacter(currentWord);
+    }
     if (currentWord.length === wordLength) {
       if (typedKey === "Enter") {
         const isMatching = await submitCurrentWord(currentWord);
@@ -153,14 +161,9 @@ export default function App() {
           return endGame(false);
         }
         // go to next row
-        currentRow++;
         setCurrentRow(currentRow + 1);
       }
       return;
-    }
-
-    if (e.key === "Backspace") {
-      return removeLastCharacter(currentWord);
     }
 
     if (typedKey.length !== 1 || !/[a-zA-Z]/.test(typedKey)) {
@@ -169,13 +172,15 @@ export default function App() {
 
     console.log(data[currentRow]);
 
-    data[currentRow][currentWord.length].value = typedKey.toUpperCase();
-    updateData();
+    console.log({ currentWord });
+    const newData = copy(data);
+    newData[currentRow][currentWord.length].value = typedKey.toUpperCase();
+    setData(newData);
   };
 
   const reset = () => {
     setCurrentRow(0);
-    setData(copy(initialData));
+    setData(generateInitialGridSate());
     setGameStatus(GAME_STATUS.PLAYING);
     setIsColoring(false);
   };
@@ -183,16 +188,20 @@ export default function App() {
   useEffect(() => {
     window.addEventListener("keydown", handleKeyPress, false);
     return () => window.removeEventListener("keydown", handleKeyPress, false);
-  }, []);
+  }, [currentRow, data, gameStatus, isColoring]);
 
   return (
     <div className="container">
       <h2>{gameStatus}</h2>
 
       <div className="grid">
-        {data.map((row) =>
+        {data.map((row, rowIndex) =>
           row.map(({ value, bgClass }, index) => (
-            <Cell key={index} value={value} backgroundClass={bgClass} />
+            <Cell
+              key={rowIndex + "-" + index}
+              value={value}
+              backgroundClass={bgClass}
+            />
           ))
         )}
         <button onClick={reset}>Reset</button>
@@ -200,5 +209,3 @@ export default function App() {
     </div>
   );
 }
-
-// RESET??
