@@ -1,8 +1,9 @@
 import TrafficLight from "./TrafficLight";
 
 import "./styles.css";
+import { Config } from "./types";
 
-const config = {
+const config: Config = {
   red: {
     backgroundColor: "red",
     duration: 4000,

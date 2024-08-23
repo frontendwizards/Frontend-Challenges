@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, Ref, useEffect, useRef, useState } from "react";
 
 const GAME_DURATION = 20;
 
@@ -20,7 +20,7 @@ const DefaultGrid = Array.from({ length: 9 }).fill(0);
 const App: FC = () => {
   const [score, setScore] = useState(0);
   const [timer, setTimer] = useState(0);
-  const timeout = useRef(0);
+  const timeout: Ref<Number | null> = useRef(null);
   const [isGameOver, setIsGameOver] = useState(true);
   const isFirstRound = timer === 0;
   const [gameGrid, setGameGrid] = useState([...DefaultGrid]);
@@ -91,7 +91,7 @@ const App: FC = () => {
   }, [timer, isGameOver]);
 
   return (
-    <div className="flex  h-full min-h-[100vh] flex-col items-center !bg-[#FA8072] p-2 pt-10 text-white">
+    <div className="flex h-full min-h-[100vh] flex-col items-center !bg-[#FA8072] p-2 pt-10 text-white">
       <div className="w-[60rem]  uppercase">
         <div className="flex h-10 w-full items-center justify-around">
           <span className="text-2xl font-bold">Score : {score}</span>
@@ -118,7 +118,7 @@ const App: FC = () => {
               <button
                 onClick={() => catchHole(index)}
                 className={classNames([
-                  "w-40 translate-x-[15%] translate-y-[100%] select-none duration-100 ease-in",
+                  "w-40 translate-x-[15%] translate-y-[100%] select-none select-none duration-100 ease-in",
                   {
                     "translate-y-[20%]": spot === 1,
                   },

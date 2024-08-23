@@ -18,12 +18,6 @@ Create a simulated traffic light. The traffic light should cycle through red, ye
 - Implement accessibility features (e.g., aria labels, keyboard controls).
 - Add sound effects for each light change.
 
-## Getting Started
-1. Clone this repository.
-2. Navigate to the `traffic-light` directory.
-3. Run `npm install` to install dependencies.
-4. Use `npm start` to run the development server.
-
 ## Solution
 A sample solution is provided in `TrafficLight.jsx`. Try implementing your own solution before looking at this!
 

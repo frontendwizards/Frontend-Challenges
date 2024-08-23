@@ -1,10 +1,17 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { Config } from "./types";
 
-function Light({ backgroundColor }) {
+function Light({ backgroundColor }: { backgroundColor: string }) {
   return <div className="traffic-light" style={{ backgroundColor }}></div>;
 }
 
-export default function TrafficLight({ config, layout = "vertical" }) {
+export default function TrafficLight({
+  config,
+  layout = "vertical",
+}: {
+  config: Config;
+  layout?: string;
+}) {
   const [currentLight, setCurrentLight] = useState("green");
 
   useEffect(() => {
