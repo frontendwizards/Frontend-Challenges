@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { FC, useEffect, useRef, useState } from "react";
 
-const GAME_DURATION = 35;
+const GAME_DURATION = 20;
 
 const getRandomNumber = (
   min: number,
@@ -51,7 +51,10 @@ const App: FC = () => {
     );
 
     const firstMolePosition = getRandomNumber(0, 9, currentMolePositions);
-    const secondMolePosition = getRandomNumber(0, 9, [firstMolePosition, ...currentMolePositions]);
+    const secondMolePosition = getRandomNumber(0, 9, [
+      firstMolePosition,
+      ...currentMolePositions,
+    ]);
 
     const newGameGrid = [...DefaultGrid];
     newGameGrid[firstMolePosition] = 1;
