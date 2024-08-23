@@ -4,7 +4,7 @@ This repo contains frontend challenges to help developers improve problem-solvin
 
 | Title                            | Completed | Accessible | Reviewed |
 | -------------------------------- | --------- | ---------- | -------- |
-| [Traffic light](/traffic-light/) | ❌        | ❌         | ❌       |
+| [Traffic light](./traffic-light/) | ❌        | ❌         | ❌       |
 | [Whack a Mole](/whack-a-mole)    | ❌        | ❌         | ❌       |
 | [Wordle Game](/wordle-game)      | ❌        | ❌         | ❌       |
 
