@@ -23,12 +23,12 @@ const config: Config = {
 
 export default function App() {
   return (
-    <div className="container">
+    <main className="container">
       <TrafficLight
         layout="traffic-light-container--vertical"
         config={config}
       />
       <TrafficLight config={config} />
-    </div>
+    </main>
   );
 }

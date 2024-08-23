@@ -1,0 +1,12 @@
+{
+  "name": "react-challenges",
+  "private": true,
+  "workspaces": [
+    "traffic-light",
+    "whack-a-mole",
+    "wordle-game"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces"
+  }
+}

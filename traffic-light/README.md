@@ -1,5 +1,9 @@
 # Traffic Light Challenge
 
+## Demo
+
+z
+
 ## Problem Description
 Create a simulated traffic light. The traffic light should cycle through red, yellow, and green lights automatically, mimicking the behavior of a real traffic signal.
 
@@ -10,22 +14,8 @@ Create a simulated traffic light. The traffic light should cycle through red, ye
    - Red: 4 seconds
    - Green: 3 seconds
    - Yellow: 1 second
-4. Only one light should be active (illuminated) at a time.
+4. Only one light should be active at a time.
 5. The cycle should repeat indefinitely.
-
-## Bonus Features (Optional)
-- Add a button to manually change the light.
-- Implement accessibility features (e.g., aria labels, keyboard controls).
-- Add sound effects for each light change.
 
 ## Solution
 A sample solution is provided in `TrafficLight.jsx`. Try implementing your own solution before looking at this!
-
-## Evaluation Criteria
-- Correct functionality
-- Code cleanliness and organization
-- Use of React hooks and state management
-- Styling and visual appeal
-- Bonus points for additional features or accessibility considerations
-
-Good luck!

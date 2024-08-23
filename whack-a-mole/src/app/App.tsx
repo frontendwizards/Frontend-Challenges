@@ -91,7 +91,7 @@ const App: FC = () => {
   }, [timer, isGameOver]);
 
   return (
-    <div className="flex h-full min-h-[100vh] flex-col items-center !bg-[#FA8072] p-2 pt-10 text-white">
+    <main className="flex h-full min-h-[100vh] flex-col items-center !bg-[#9E1205] p-2 pt-10 text-white">
       <div className="w-[60rem]  uppercase">
         <div className="flex h-10 w-full items-center justify-around">
           <span className="text-2xl font-bold">Score : {score}</span>
@@ -138,7 +138,7 @@ const App: FC = () => {
           ))}
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 
