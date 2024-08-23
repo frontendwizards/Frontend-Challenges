@@ -1,17 +1,22 @@
-# frontend-challenges (IN PROGRESS)
+# Frontend Challenges (IN PROGRESS)
 
-This repo contains frontend challenges to help developers improve problem-solving skills and create accessible UIs. Each challenge includes a live demo, and solution in React with TypeScript.
+This repo contains frontend challenges to help developers improve problem-solving skills and create accessible UIs.
+
+Each challenge includes:
+- Requirements
+- Live demo
+- Solution in React with TypeScript.<br><br>
 
 | Title                            | Completed | Accessible | Reviewed |
 | -------------------------------- | --------- | ---------- | -------- |
-| [Traffic light](./traffic-light/) | ❌        | ❌         | ❌       |
+| [Traffic light](/traffic-light/) | ❌        | ❌         | ❌       |
 | [Whack a Mole](/whack-a-mole)    | ❌        | ❌         | ❌       |
 | [Wordle Game](/wordle-game)      | ❌        | ❌         | ❌       |
 
 ## Use Cases
 
-1. Employers evaluating frontend developer skills
-2. Frontend developers seeking practice with coding challenges.
+- Employers evaluating frontend developer skills
+- Frontend developers seeking practice with coding challenges.
 
 ## How can you help?
 
