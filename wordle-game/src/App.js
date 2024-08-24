@@ -137,7 +137,6 @@ export default function App() {
     }
 
     const newData = copy(data);
-    console.log({ currentWord });
     newData[currentRow][currentWord.length - 1].value = null;
     setData(newData);
   };
@@ -170,9 +169,6 @@ export default function App() {
       return;
     }
 
-    console.log(data[currentRow]);
-
-    console.log({ currentWord });
     const newData = copy(data);
     newData[currentRow][currentWord.length].value = typedKey.toUpperCase();
     setData(newData);
