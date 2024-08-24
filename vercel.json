@@ -1,7 +1,5 @@
 {
-  "routes": [
-    { "src": "/traffic-light", "dest": "/problems/traffic-light/index.html" },
-    { "src": "/whack-a-mole", "dest": "/problems/whack-a-mole/index.html" },
-    { "src": "/wordle-game", "dest": "/problems/wordle-game/index.html" }
+  "builds": [
+    { "src": "/problems/traffic-light/dist/*", "use" : "@now/static" }
   ]
 }
