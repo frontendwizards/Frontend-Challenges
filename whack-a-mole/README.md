@@ -1,63 +1,24 @@
-# TypeScript React Tailwind Vite Template
+# Whack-a-Mole Challenge
 
-This template provides a starting point for creating React projects with TypeScript, Tailwind CSS, and Vite.
+## Demo
 
-## Overview
+<img src="public/images/demo.png"/>
 
-This template allows you to quickly set up a React project with TypeScript, Tailwind CSS, and Vite. It provides a modern development environment with features such as hot module replacement and fast refresh, making it easy to develop and customize your React applications.
+## Problem Description
 
-## Features
+Create a Whack-a-Mole game where players must click on moles as they randomly appear from holes. The game tests reflexes and timing as players try to achieve the highest score possible within a time limit.
 
-- TypeScript: Develop with confidence using static type-checking and improved tooling.
+## Requirements
 
-- React: Build dynamic user interfaces with the popular React library.
+- The game should have a grid of 9 holes.
+- When the game starts, moles will pop up randomly from the holes.
+- The player must click on a mole to whack it. Each successful whack earns one point.
+- If the player does not whack the mole within a short time, it will disappear.
+- New moles randomly appear from the holes as the game progresses.
+- The player has 20 seconds to hit as many moles as possible.
+- The game ends when the timer runs out. The final score is displayed and the player has the option to play again.
+- The game should have a start button and display the current score and time remaining.
 
-- Tailwind CSS: Easily style and customize your components using the utility-first approach of Tailwind CSS.
+## Live Demo
 
-- Vite: Enjoy fast development and instant hot module replacement with Vite's lightning-fast dev server.
-
-## Installation
-
-To create a new project using this template, follow these steps:
-
-1. Ensure that you have Node.js installed on your machine.
-2. Open a terminal and navigate to the directory where you want to create your project.
-3. Run the following command to create a new project using the template:
-
-```bash
-npx create-vite@latest --template typescript-react-tailwind-vite my-project
-```
-
-Replace my-project with the desired name for your project.
-
-4. Once the command completes, navigate into the project directory:
-
-```bash
-cd my-project
-```
-
-5. Install the dependencies:
-
-```bash
-npm install
-```
-
-## Usage
-
-To start the development server and run the project, use the following command:
-
-```bash
-npm run dev
-```
-
-This will start the development server and open your project in the browser. Any changes you make to the source code will be automatically reflected in the browser.
-
-## Building for Production
-
-To build the project for production, use the following command:
-
-```bash
-npm run build
-```
-
-This will create an optimized build of your project in the dist directory.
+[Check out the live demo here](#)

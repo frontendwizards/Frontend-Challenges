@@ -3,6 +3,7 @@
 This repo contains frontend challenges to help developers improve problem-solving skills and create accessible UIs.
 
 Each challenge includes:
+
 - Requirements
 - Live demo
 - Solution in React with TypeScript.<br><br>
@@ -10,7 +11,7 @@ Each challenge includes:
 | Title                            | Completed | Accessible | Reviewed |
 | -------------------------------- | --------- | ---------- | -------- |
 | [Traffic light](/traffic-light/) | ✅        | ✅         | ✅       |
-| [Whack a Mole](/whack-a-mole)    | ✅        | ❌         | ❌       |
+| [Whack a Mole](/whack-a-mole)    | ✅        | ✅         | ✅       |
 | [Wordle Game](/wordle-game)      | ❌        | ❌         | ❌       |
 
 ## How to check if your solution is accessible

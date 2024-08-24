@@ -1,26 +1,15 @@
 import classNames from "classnames";
-import { FC, Ref, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 
 const GAME_DURATION = 20;
+const GRID_SIZE = 9;
 
-const getRandomNumber = (
-  min: number,
-  max: number,
-  exclude: number[],
-): number => {
-  const random = Math.floor(Math.random() * (max - min) + min);
-  if (exclude.includes(random)) {
-    return getRandomNumber(min, max, exclude);
-  }
-  return random;
-};
-
-const DefaultGrid = Array.from({ length: 9 }).fill(0);
+const DefaultGrid = Array.from({ length: GRID_SIZE }).fill(0);
 
 const App: FC = () => {
   const [score, setScore] = useState(0);
   const [timer, setTimer] = useState(0);
-  const timeout: Ref<Number | null> = useRef(null);
+  const timeout = useRef<NodeJS.Timeout | null>(null);
   const [isGameOver, setIsGameOver] = useState(true);
   const isFirstRound = timer === 0;
   const [gameGrid, setGameGrid] = useState([...DefaultGrid]);
@@ -40,21 +29,14 @@ const App: FC = () => {
   };
 
   const respawnNewMoles = () => {
-    const currentMolePositions = gameGrid.reduce(
-      (savedMolePositions: number[], currentSpot, currentIndex) => {
-        if (currentSpot === 1) {
-          savedMolePositions.push(currentIndex);
-        }
-        return savedMolePositions;
-      },
-      [],
-    );
+    const availablePositions = gameGrid.reduce<number[]>((acc, spot, index) => {
+      if (spot === 0) acc.push(index);
+      return acc;
+    }, []);
 
-    const firstMolePosition = getRandomNumber(0, 9, currentMolePositions);
-    const secondMolePosition = getRandomNumber(0, 9, [
-      firstMolePosition,
-      ...currentMolePositions,
-    ]);
+    const [firstMolePosition, secondMolePosition] = availablePositions
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 2);
 
     const newGameGrid = [...DefaultGrid];
     newGameGrid[firstMolePosition] = 1;
@@ -64,8 +46,10 @@ const App: FC = () => {
   };
 
   const reset = () => {
+    if (timeout.current) {
+      clearTimeout(timeout.current);
+    }
     setIsGameOver(true);
-    clearTimeout(timeout.current);
     setGameGrid([...DefaultGrid]);
   };
 
@@ -77,22 +61,28 @@ const App: FC = () => {
       return;
     }
 
+    // respawn Moles each 2 seconds (ex: 0, 2, 4...)
     if (timer % 1 === 0) {
       respawnNewMoles();
     }
 
+    // increase the timer by +0.5/s
     timeout.current = setTimeout(() => {
       setTimer((prevTimer) => prevTimer + 0.5);
     }, 500);
 
     return () => {
-      clearTimeout(timeout.current);
+      if (timeout.current) {
+        clearTimeout(timeout.current);
+      }
     };
   }, [timer, isGameOver]);
 
+  const timeLeft = GAME_DURATION - Math.ceil(timer);
+
   return (
-    <main className="flex h-full min-h-[100vh] flex-col items-center !bg-[#9E1205] p-2 pt-10 text-white">
-      <div className="w-[60rem]  uppercase">
+    <main className="flex h-full min-h-[100vh] flex-col items-center !bg-[#5e8484] p-2 pt-10 text-white">
+      <div className="w-[60rem] uppercase">
         <div className="flex h-10 w-full items-center justify-around">
           <span className="text-2xl font-bold">Score : {score}</span>
           <div className="w-[10rem] text-center">
@@ -106,7 +96,7 @@ const App: FC = () => {
             )}
           </div>
           <span className="text-left text-2xl font-bold">
-            Time left : {GAME_DURATION - Math.ceil(timer)}
+            Time left : {timeLeft}
           </span>
         </div>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-x-10">
@@ -118,7 +108,7 @@ const App: FC = () => {
               <button
                 onClick={() => catchHole(index)}
                 className={classNames([
-                  "w-40 translate-x-[15%] translate-y-[100%] select-none select-none duration-100 ease-in",
+                  "h-40 w-40 translate-x-[15%] translate-y-[100%] select-none duration-100 ease-in",
                   {
                     "translate-y-[20%]": spot === 1,
                   },
@@ -131,7 +121,7 @@ const App: FC = () => {
               </button>
               <img
                 alt="mole hill"
-                className="z-10 translate-x-[-10px] translate-y-[-30%]"
+                className="absolute bottom-[-1.69rem] "
                 src="https://www.greatfrontend.com/img/questions/whack-a-mole/mole-hill.png"
               />
             </div>
