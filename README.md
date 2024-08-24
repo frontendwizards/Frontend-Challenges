@@ -6,13 +6,18 @@ Each challenge includes:
 
 - Requirements
 - Live demo
-- Solution in React with TypeScript.<br><br>
+- Solution in React with TypeScript.
+  <br><br>
 
-| Title                            | Completed | Accessible | Reviewed |
-| -------------------------------- | --------- | ---------- | -------- |
-| [Traffic light](/traffic-light/) | ✅        | ✅         | ✅       |
-| [Whack a Mole](/whack-a-mole)    | ✅        | ✅         | ✅       |
-| [Wordle Game](/wordle-game)      | ❌        | ❌         | ❌       |
+<center>
+
+| Title                                     | Completed | Accessible | Reviewed |
+| ----------------------------------------- | --------- | ---------- | -------- |
+| [Traffic light](/problems/traffic-light/) | ✅        | ✅         | ✅       |
+| [Whack a Mole](/problems/whack-a-mole/)   | ✅        | ✅         | ✅       |
+| [Wordle Game](/problems/wordle-game/)     | ❌        | ❌         | ❌       |
+
+</center>
 
 ## How to check if your solution is accessible
 

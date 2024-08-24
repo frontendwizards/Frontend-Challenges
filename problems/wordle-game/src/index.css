@@ -1,4 +1,7 @@
-
+body {
+  background-color: #121214;
+  color: white;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -11,35 +14,35 @@ code {
   grid-template-columns: repeat(5, 4rem);
 }
 
-.container{
+.container {
   margin: 6rem 10rem;
   text-align: center;
   display: flex;
   align-items: center;
-  flex-direction: column
+  flex-direction: column;
 }
 
 .cell {
   width: 4rem;
   height: 4rem;
-  border: 2px solid #E2E3E6;
+  border: 2px solid #3a3a3d;
   color: black;
   font-size: 3rem;
   text-transform: capitalize;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  color: white;
+  font-family: extrabold;
   transition-duration: 1s;
 }
 
 .cell-filled {
-  color:white;
   border-color: transparent;
 }
 
 .light-gray {
-  background-color: white;
+  background-color: inherit;
 }
 
 .green {

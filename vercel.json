@@ -1,12 +1,7 @@
 {
-  "builds": [
-    { "src": "traffic-light/package.json", "use": "@vercel/node" },
-    { "src": "whack-a-mole/package.json", "use": "@vercel/node" },
-    { "src": "wordle-game/package.json", "use": "@vercel/node" }
-  ],
   "routes": [
-    { "src": "/traffic-light(.*)", "dest": "/traffic-light" },
-    { "src": "/whack-a-mole(.*)", "dest": "/whack-a-mole" },
-    { "src": "/wordle-game(.*)", "dest": "/wordle-game" }
+    { "src": "/traffic-light", "dest": "/problems/traffic-light/index.html" },
+    { "src": "/whack-a-mole", "dest": "/problems/whack-a-mole/index.html" },
+    { "src": "/wordle-game", "dest": "/problems/wordle-game/index.html" }
   ]
 }

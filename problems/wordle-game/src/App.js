@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import "./index.css";
 
-// TODO check same row?? duplicate
-// TODO remove updateData and copy()?
-
 const WORDS = Object.freeze([
   "APPLE",
   "BEAST",
@@ -79,7 +76,6 @@ export default function App() {
   const targetWord = WORDS[0];
 
   const updateData = (newData = data) => {
-    console.log(newData[currentRow]);
     setData(copy(newData));
   };
 
@@ -87,6 +83,7 @@ export default function App() {
     return new Promise((resolve) => {
       let index = 0;
       const interval = setInterval(() => {
+        // TODO : copy first
         currentRowData[index].bgClass = bgColorsList[index];
         index++;
         updateData();
@@ -188,6 +185,7 @@ export default function App() {
 
   return (
     <div className="container">
+      <h1>WORDLE</h1>
       <h2>{gameStatus}</h2>
 
       <div className="grid">
