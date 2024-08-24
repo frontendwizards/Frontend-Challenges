@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./index.css";
 
 // TODO check same row?? duplicate
-// TODO remove updateData and only
+// TODO remove updateData and copy()?
 
 const WORDS = Object.freeze([
   "APPLE",

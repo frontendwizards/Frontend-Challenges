@@ -11,7 +11,7 @@ const config: Config = {
   },
   yellow: {
     backgroundColor: "yellow",
-    duration: 500,
+    duration: 1000,
     next: "red",
   },
   green: {
