@@ -12,26 +12,9 @@ Create a file tree component that displays a hierarchical file structure. The co
 - Each folder should be collapsible, allowing users to expand or collapse its contents.
 - The tree should sort files and folders alphabetically within each directory.
 - Files and folders should be styled to indicate their level of nesting.
-- Implement an `aria-label` on the toggle button for accessibility, indicating whether the folder is open or closed.
 - The file tree component should be able to handle any depth of nesting.
-
-## Technical Specifications
-
-- **Component Structure**:
-
-  - `TreeNode`: A component representing a single node (file or folder) in the tree.
-  - `FileTree`: The main component that renders the entire tree structure.
-
-- **State Management**:
-
-  - Use React state to manage the expansion state of folders.
-
-- **Accessibility**:
-
-  - Ensure the component is accessible, with appropriate ARIA roles and properties.
-
-- **Styling**:
-  - Style the component to make it visually clear which items are files and which are folders. Use padding to indicate nesting levels.
+- Ensure the component is accessible, with appropriate ARIA roles and properties.
+- Style the component to make it visually clear which items are files and which are folders. Use padding to indicate nesting levels.
 
 ## Example
 

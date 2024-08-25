@@ -15,7 +15,7 @@ Each challenge includes:
 | ----------------------------------------- | --------- | ---------- | -------- |
 | [Traffic light](/problems/traffic-light/) | ✅        | ✅         | ✅       |
 | [Whack a Mole](/problems/whack-a-mole/)   | ✅        | ✅         | ✅       |
-| [File Explorer](/problems/file-explorer/) | ✅        | ✅ ✅      |
+| [File Explorer](/problems/file-explorer/) | ✅        | ✅         | ✅       |
 | [Wordle Game](/problems/wordle-game/)     | ❌        | ❌         | ❌       |
 
 </center>
