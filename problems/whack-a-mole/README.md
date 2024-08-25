@@ -1,6 +1,5 @@
 # Whack-a-Mole Challenge
 
-
 ## Problem Description
 
 Create a Whack-a-Mole game where players must click on moles as they randomly appear from holes. The game tests reflexes and timing as players try to achieve the highest score possible within a time limit.
