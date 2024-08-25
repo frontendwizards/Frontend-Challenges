@@ -1,22 +1,38 @@
-# Traffic Light Challenge
+# starter
 
-## Problem Description
+This project was bootstrapped with [Vite](https://vitejs.dev/) using the React TypeScript template.
 
-Create a simulated traffic light. The traffic light should cycle through red, yellow, and green lights automatically, mimicking the behavior of a real traffic signal.
+## Getting Started
 
-<img src="public/images/demo.png"/>
+1. Clone the repository
+2. Install dependencies
+3. Start the development server
 
-## Requirements
+## Available Scripts
 
-1. Display three lights: red, yellow, and green.
-2. Automatically cycle through the lights in the correct order (green -> yellow -> red -> green).
-3. Each light should stay active for a set duration:
-   - Green: 3 seconds
-   - Yellow: 1 second
-   - Red: 4 seconds
-4. Only one light should be active at a time.
-5. The cycle should repeat indefinitely.
+- `npm run dev`: Starts the development server
+- `npm run build`: Builds the app for production
+- `npm run preview`: Locally preview the production build
 
-## Live Demo
+## Tech Stack
 
-[Check out the live demo here](#)
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+
+## Project Structure
+
+The project structure follows Vite's default setup for React with TypeScript.
+
+## Learn More
+
+To learn more about the technologies used in this project, check out the following resources:
+
+- [Vite Documentation](https://vitejs.dev/guide/)
+- [React Documentation](https://reactjs.org/docs/getting-started.html)
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
