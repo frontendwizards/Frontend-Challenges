@@ -55,16 +55,26 @@ function TreeNode({
   node: Readonly<FileTreeNode>;
   depth: Readonly<number>;
 }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const { name, children = [], type } = node;
 
-  const toggleOpen = () => setIsOpen(!isOpen);
+  const toggleOpen = () => setIsExpanded(!isExpanded);
+
+  const sortedFiles = children
+    .filter((child) => child.type === "file")
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  const sortedFolders = children
+    .filter((child) => child.type === "folder")
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  const sortedChildren = [...sortedFolders, ...sortedFiles];
 
   return (
     <li
       role={type === "folder" ? "treeitem" : "none"}
-      aria-expanded={type === "folder" ? isOpen : undefined}
+      aria-expanded={type === "folder" ? isExpanded : undefined}
       style={{ paddingLeft: `${depth * 20}px` }}
     >
       <span>{name} </span>
@@ -72,15 +82,15 @@ function TreeNode({
         <button
           onClick={toggleOpen}
           className="text-xl"
-          aria-expanded={isOpen}
-          aria-label={`${isOpen ? "close" : "open"} folder ${name}`}
+          aria-expanded={isExpanded}
+          aria-label={`${isExpanded ? "close" : "open"} folder ${name}`}
         >
-          [{isOpen ? "-" : "+"}]
+          [{isExpanded ? "-" : "+"}]
         </button>
       )}
-      {isOpen && (
+      {isExpanded && (
         <ul>
-          {children.map((child, index) => (
+          {sortedChildren.map((child, index) => (
             <TreeNode key={index} node={child} depth={depth + 1} />
           ))}
         </ul>

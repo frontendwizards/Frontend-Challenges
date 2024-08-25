@@ -1,38 +1,85 @@
-# starter
+# File Tree Challenge
 
-This project was bootstrapped with [Vite](https://vitejs.dev/) using the React TypeScript template.
+## Problem Description
 
-## Getting Started
+Create a file tree component that displays a hierarchical file structure. The component should allow users to expand and collapse folders to navigate through the file system. Files and folders should be displayed in a structured manner, with folders being expandable to show their contents.
 
-1. Clone the repository
-2. Install dependencies
-3. Start the development server
+![File Tree Demo](public/images/demo.png)
 
-## Available Scripts
+## Requirements
 
-- `npm run dev`: Starts the development server
-- `npm run build`: Builds the app for production
-- `npm run preview`: Locally preview the production build
+- The file tree should display a hierarchical structure of files and folders.
+- Each folder should be collapsible, allowing users to expand or collapse its contents.
+- The tree should sort files and folders alphabetically within each directory.
+- Files and folders should be styled to indicate their level of nesting.
+- Implement an `aria-label` on the toggle button for accessibility, indicating whether the folder is open or closed.
+- The file tree component should be able to handle any depth of nesting.
 
-## Tech Stack
+## Technical Specifications
 
-- React
-- TypeScript
-- Vite
-- Tailwind CSS
+- **Component Structure**:
 
-## Project Structure
+  - `TreeNode`: A component representing a single node (file or folder) in the tree.
+  - `FileTree`: The main component that renders the entire tree structure.
 
-The project structure follows Vite's default setup for React with TypeScript.
+- **State Management**:
 
-## Learn More
+  - Use React state to manage the expansion state of folders.
 
-To learn more about the technologies used in this project, check out the following resources:
+- **Accessibility**:
 
-- [Vite Documentation](https://vitejs.dev/guide/)
-- [React Documentation](https://reactjs.org/docs/getting-started.html)
-- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
+  - Ensure the component is accessible, with appropriate ARIA roles and properties.
 
-## License
+- **Styling**:
+  - Style the component to make it visually clear which items are files and which are folders. Use padding to indicate nesting levels.
 
-[MIT](https://choosealicense.com/licenses/mit/)
+## Example
+
+Here's an example of the file tree data structure:
+
+```javascript
+const fileTreeData = [
+  {
+    name: "src",
+    type: "folder",
+    children: [
+      {
+        name: "index.ts",
+        type: "file",
+      },
+      {
+        name: "app",
+        type: "folder",
+        children: [
+          {
+            name: "app.tsx",
+            type: "file",
+          },
+        ],
+      },
+      {
+        name: "styles.css",
+        type: "file",
+      },
+      {
+        name: "utils",
+        type: "folder",
+        children: [
+          {
+            name: "utils.ts",
+            type: "file",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: "README.md",
+    type: "file",
+  },
+];
+```
+
+## Live Demo
+
+[Check out the live demo here](#)
