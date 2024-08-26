@@ -181,7 +181,7 @@ export default function App() {
   useEffect(() => {
     window.addEventListener("keydown", handleKeyPress, false);
     return () => window.removeEventListener("keydown", handleKeyPress, false);
-  }, [currentRow, data, gameStatus, isColoring]);
+  }, [currentRow, data, gameStatus, isColoring, handleKeyPress]);
 
   return (
     <div className="container">

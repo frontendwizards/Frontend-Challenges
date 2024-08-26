@@ -27,7 +27,7 @@ jobs:
           npm install @rollup/rollup-linux-x64-gnu
           npm i --save-dev @types/node
 
-      - name: Build problems
+      - name: Build challenges
         run: |
           mkdir -p dist
           for problem in problems/*; do
