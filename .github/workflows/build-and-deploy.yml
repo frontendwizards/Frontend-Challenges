@@ -11,9 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: npm install
-
       - name: Build problems
         run: |
           mkdir -p dist
@@ -25,12 +22,15 @@ jobs:
               # Navigate to problem directory
               cd "$problem"
               
+              # Install dependencies
+              npm install
+
               # Build the project (adjust command as needed)
               npm run build
               
               # Copy build output to dist folder
               mkdir -p ../../dist/problems/$problem_name
-              cp -r build/* ../../dist/problems/$problem_name/
+              cp -r dist/* ../../dist/problems/$problem_name/
               
               # Return to root
               cd ../..
