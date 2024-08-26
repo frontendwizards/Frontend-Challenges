@@ -34,6 +34,9 @@ jobs:
           success_problems=()
           failed_problems=()
 
+          counter=0
+          max_problems=2
+
           for problem in problems/*; do
             if [ -d "$problem" ]; then
               problem_name=$(basename "$problem")
@@ -52,6 +55,12 @@ jobs:
               fi
               
               cd ../..
+
+              # Increment counter and check if we've reached the maximum
+              ((counter++))
+              if [ "$counter" -ge "$max_problems" ]; then
+                break
+              fi
             fi
           done
 
@@ -70,6 +79,11 @@ jobs:
           for problem in "${failed_problems[@]}"; do
             echo "| $problem | ❌ | - |" >> $GITHUB_STEP_SUMMARY
           done
+
+      - name: Print dist directory content
+        run: |
+          echo "Contents of the dist directory:"
+          ls -R dist
 
       - name: Deploy to Vercel
         if: ${{ env.success_problems }}
