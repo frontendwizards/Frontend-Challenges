@@ -55,18 +55,20 @@ jobs:
             fi
           done
 
-          # Write summary to GITHUB_STEP_SUMMARY
+          # Write summary to GITHUB_STEP_SUMMARY with links
           echo "## Build Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Status | Challenge Name |" >> $GITHUB_STEP_SUMMARY
-          echo "|--------|----------------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Challenge Name | Status | Link |" >> $GITHUB_STEP_SUMMARY
+          echo "|----------------|--------|------|" >> $GITHUB_STEP_SUMMARY
+
+          base_url="https://frontendproblems.vercel.app"
 
           for problem in "${success_problems[@]}"; do
-            echo "| Success | $problem |" >> $GITHUB_STEP_SUMMARY
+            echo "| $problem | ✅ | [$problem]($base_url/$problem) |" >> $GITHUB_STEP_SUMMARY
           done
 
           for problem in "${failed_problems[@]}"; do
-            echo "| Failed  | $problem |" >> $GITHUB_STEP_SUMMARY
+            echo "| $problem | ❌ | - |" >> $GITHUB_STEP_SUMMARY
           done
 
       - name: Deploy to Vercel

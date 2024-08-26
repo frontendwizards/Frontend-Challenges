@@ -1,7 +1,7 @@
 {
   "rewrites": [
-    { "source": "/file-explorer", "destination": "/dist/file-explorer/index.html" },
-    { "source": "/traffic-light", "destination": "/dist/traffic-light/index.html" },
-    { "source": "/(.*)", "destination": "/dist/$1/index.html" }
+    { "source": "/file-explorer", "destination": "/file-explorer/index.html" },
+    { "source": "/traffic-light", "destination": "/traffic-light/index.html" },
+    { "source": "/(.*)", "destination": "/$1/index.html" }
   ]
 }
