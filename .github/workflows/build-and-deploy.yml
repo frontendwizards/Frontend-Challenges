@@ -37,27 +37,31 @@ jobs:
           counter=0
           max_problems=2
 
-          while [ $counter -lt $max_problems ] && [ $counter -lt ${#problems[@]} ]; do
-            problem=${problems[$counter]}
-            problem_name=$(basename "$problem")
-            echo "Building $problem_name"
-            
-            cd "$problem"
+          for problem in problems/*; do
+            if [ -d "$problem" ]; then
+              problem_name=$(basename "$problem")
+              echo "Building $problem_name"
+              
+              cd "$problem"
 
-            if npm ci && npm run build; then
-              echo "$problem_name build succeeded"
-              mkdir -p ../../dist/problems/$problem_name
-              cp -r dist/* ../../dist/problems/$problem_name/
-              success_problems+=("$problem_name")
-            else
-              echo "$problem_name build failed"
-              failed_problems+=("$problem_name")
+              if npm ci && npm run build; then
+                echo "$problem_name build succeeded"
+                mkdir -p ../../dist/problems/$problem_name
+                cp -r dist/* ../../dist/problems/$problem_name/
+                success_problems+=("$problem_name")
+              else
+                echo "$problem_name build failed"
+                failed_problems+=("$problem_name")
+              fi
+              
+              cd ../..
+
+              # Increment counter and check if we've reached the maximum
+              ((counter++))
+              if [ "$counter" -ge "$max_problems" ]; then
+                break
+              fi
             fi
-            
-            cd ../..
-
-            # Increment counter
-            ((counter++))
           done
 
           # Write summary to GITHUB_STEP_SUMMARY with links
