@@ -1,17 +1,7 @@
 {
   "rewrites": [
-    {
-      "source": "/problems/traffic-light/",
-      "destination": "https://frontend-challenges.vercel.com/traffic-light/"
-    },
-    {
-      "source": "/problems/traffic-light/:match*",
-      "destination": "https://frontend-challenges.vercel.com/traffic-light/:match*"
-    },
-    { "source": "/", "destination": "https://frontend-challenges.vercel.com/" },
-    {
-      "source": "/:match*",
-      "destination": "https://frontend-challenges.vercel.com/:match*"
-    }
+    { "source": "/file-explorer", "destination": "/problems/file-explorer/index.html" },
+    { "source": "/traffic-light", "destination": "/problems/traffic-light/index.html" },
+    { "source": "/(.*)", "destination": "/problems/$1/index.html" }
   ]
 }
