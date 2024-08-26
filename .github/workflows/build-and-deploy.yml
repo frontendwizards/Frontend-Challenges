@@ -62,7 +62,7 @@ jobs:
           echo "Failed: ${failed_problems[@]}" >> $GITHUB_STEP_SUMMARY
 
       - name: Deploy to Vercel
-        if: env.success_problems != ""
+        if: ${{ env.success_problems }}
         uses: amondnet/vercel-action@v20
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
