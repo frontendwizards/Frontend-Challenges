@@ -3,6 +3,8 @@ name: Build and Deploy Problems
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   build-and-deploy:
@@ -21,7 +23,9 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Install platform-specific packages
-        run: npm install @rollup/rollup-linux-x64-gnu
+        run: |
+          npm install @rollup/rollup-linux-x64-gnu
+          npm i --save-dev @types/node
 
       - name: Build problems
         run: |
