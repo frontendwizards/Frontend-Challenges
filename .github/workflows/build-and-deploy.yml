@@ -28,32 +28,42 @@ jobs:
           npm i --save-dev @types/node
 
       - name: Build challenges
+        id: build-challenges
         run: |
           mkdir -p dist
-          for problem in problems/*; do
-            if [ -d "$problem" ]; then
-              problem_name=$(basename "$problem")
-              echo "Building $problem_name"
-              
-              # Navigate to problem directory
-              cd "$problem"
-              
-              # Install dependencies
-              npm ci
+          success_problems=()
+          failed_problems=()
 
-              # Build the project (adjust command as needed)
-              npm run build
-              
-              # Copy build output to dist folder
+          build_problem() {
+            local problem_name=$1
+
+            echo "Building $problem_name"
+            cd "$problem_name"
+
+            if npm ci && npm run build; then
               mkdir -p ../../dist/problems/$problem_name
               cp -r dist/* ../../dist/problems/$problem_name/
-              
-              # Return to root
-              cd ../..
+              success_problems+=("$problem_name")
+              echo "$problem_name build succeeded"
+            else
+              failed_problems+=("$problem_name")
+              echo "$problem_name build failed"
+            fi
+
+            cd ../..
+          }
+
+          for problem in problems/*; do
+            if [ -d "$problem" ]; then
+              build_problem "$(basename "$problem")"
             fi
           done
 
+          echo "Success: ${success_problems[@]}" >> $GITHUB_STEP_SUMMARY
+          echo "Failed: ${failed_problems[@]}" >> $GITHUB_STEP_SUMMARY
+
       - name: Deploy to Vercel
+        if: steps.build-challenges.outputs.success_problems != ""
         uses: amondnet/vercel-action@v20
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}

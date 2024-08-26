@@ -138,39 +138,6 @@ export default function App() {
     setData(newData);
   };
 
-  const handleKeyPress = async (e) => {
-    if (gameStatus !== GAME_STATUS.PLAYING || isColoring) {
-      return;
-    }
-
-    const typedKey = e.key;
-
-    let currentWord = getCurrentWord(data[currentRow]);
-    if (typedKey === "Backspace") {
-      return removeLastCharacter(currentWord);
-    }
-    if (currentWord.length === wordLength) {
-      if (typedKey === "Enter") {
-        const isMatching = await submitCurrentWord(currentWord);
-        if (isMatching) return endGame();
-        if (currentRow === tries - 1) {
-          return endGame(false);
-        }
-        // go to next row
-        setCurrentRow(currentRow + 1);
-      }
-      return;
-    }
-
-    if (typedKey.length !== 1 || !/[a-zA-Z]/.test(typedKey)) {
-      return;
-    }
-
-    const newData = copy(data);
-    newData[currentRow][currentWord.length].value = typedKey.toUpperCase();
-    setData(newData);
-  };
-
   const reset = () => {
     setCurrentRow(0);
     setData(generateInitialGridSate());
@@ -179,9 +146,42 @@ export default function App() {
   };
 
   useEffect(() => {
+    const handleKeyPress = async (e) => {
+      if (gameStatus !== GAME_STATUS.PLAYING || isColoring) {
+        return;
+      }
+
+      const typedKey = e.key;
+
+      let currentWord = getCurrentWord(data[currentRow]);
+      if (typedKey === "Backspace") {
+        return removeLastCharacter(currentWord);
+      }
+      if (currentWord.length === wordLength) {
+        if (typedKey === "Enter") {
+          const isMatching = await submitCurrentWord(currentWord);
+          if (isMatching) return endGame();
+          if (currentRow === tries - 1) {
+            return endGame(false);
+          }
+          // go to next row
+          setCurrentRow(currentRow + 1);
+        }
+        return;
+      }
+
+      if (typedKey.length !== 1 || !/[a-zA-Z]/.test(typedKey)) {
+        return;
+      }
+
+      const newData = copy(data);
+      newData[currentRow][currentWord.length].value = typedKey.toUpperCase();
+      setData(newData);
+    };
+
     window.addEventListener("keydown", handleKeyPress, false);
     return () => window.removeEventListener("keydown", handleKeyPress, false);
-  }, [currentRow, data, gameStatus, isColoring, handleKeyPress]);
+  }, [currentRow, data, gameStatus, isColoring]);
 
   return (
     <div className="container">
