@@ -55,11 +55,19 @@ jobs:
             fi
           done
 
-          echo "success_problems=${success_problems[*]}" >> $GITHUB_ENV
-          echo "failed_problems=${failed_problems[*]}" >> $GITHUB_ENV
+          # Write summary to GITHUB_STEP_SUMMARY
+          echo "## Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Status | Challenge Name |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|----------------|" >> $GITHUB_STEP_SUMMARY
 
-          echo "Success: ${success_problems[@]}" >> $GITHUB_STEP_SUMMARY
-          echo "Failed: ${failed_problems[@]}" >> $GITHUB_STEP_SUMMARY
+          for problem in "${success_problems[@]}"; do
+            echo "| Success | $problem |" >> $GITHUB_STEP_SUMMARY
+          done
+
+          for problem in "${failed_problems[@]}"; do
+            echo "| Failed  | $problem |" >> $GITHUB_STEP_SUMMARY
+          done
 
       - name: Deploy to Vercel
         if: ${{ env.success_problems }}
