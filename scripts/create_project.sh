@@ -19,6 +19,6 @@ FULL_PATH="$PROJECT_PATH/$PROJECT_NAME"
 cp -r starter "$FULL_PATH"
 
 # Replace all instances of "starter" with the project name in package.json files
-find "$FULL_PATH" -name 'package.json' -exec sed -i'' -e "s/starter/$PROJECT_NAME/g" {} +
+find "$FULL_PATH/solutions/react-ts" -name 'package.json' -exec sed -i'' -e "s/starter/$PROJECT_NAME/g" {} +
 
 echo "Project '$PROJECT_NAME' created successfully at '$FULL_PATH'."
