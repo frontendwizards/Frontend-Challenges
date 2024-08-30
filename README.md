@@ -11,14 +11,14 @@ Each challenge includes:
 
 <center>
 
-| Title                                       | Completed | Accessible | Reviewed | Solution Explained |
-| ------------------------------------------- | --------- | ---------- | -------- | ------------------ |
-| [Traffic light](/problems/traffic-light/)   | ✅        | ✅         | ✅       | -                  |
-| [Whack a Mole](/problems/whack-a-mole/)     | ✅        | ✅         | ✅       | -                  |
-| [File Explorer](/problems/file-explorer/)   | ✅        | ✅         | ✅       | -                  |
-| [Wordle Game](/problems/wordle-game/)       | -         | -          | -        | -                  |
-| [Twitter like](/problems/twitter-like-1/)   | -         | -          | -        | -                  |
-| [Twitter like 2](/problems/twitter-like-2/) | -         | -          | -        | -                  |
+| Title                                        | Completed | Accessible | Reviewed | Solution Explained |
+| -------------------------------------------- | --------- | ---------- | -------- | ------------------ |
+| [Traffic light](/problems/traffic-light/)    | ✅        | ✅         | ✅       | -                  |
+| [Whack a Mole](/problems/whack-a-mole/)      | ✅        | ✅         | ✅       | -                  |
+| [File Explorer](/problems/file-explorer/)    | ✅        | ✅         | ✅       | -                  |
+| [Wordle Game](/problems/wordle-game/)        | -         | -          | -        | -                  |
+| [Twitter like](/problems/twitter-like/)      | -         | -          | -        | -                  |
+| [Twitter like II](/problems/twitter-like-2/) | -         | -          | -        | -                  |
 
 </center>
 
@@ -45,6 +45,9 @@ sh scripts/create_project.sh $PROJECT_NAME $PROJECT_PATH
 You can use automated accessibility checkers like **axe-core** to detect most accessibility issues.
 
 For more information, check out [this article](https://larsmagnus.co/blog/how-to-test-for-accessibility-with-axe-core-in-next-js-and-react).
+
+> [!NOTE]  
+> It's already included in the starter template
 
 ## How can you help?
 
