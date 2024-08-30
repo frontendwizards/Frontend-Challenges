@@ -1,11 +1,10 @@
-# File Tree Challenge
+# Example Challenge Description
 
 ## Problem Description
 
 ![File Tree Demo](public/images/demo.png)
 
 ## Requirements
-
 
 ## Example
 

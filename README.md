@@ -11,14 +11,15 @@ Each challenge includes:
 
 <center>
 
-| Title                                        | Completed | Accessible | Reviewed | Solution Explained |
-| -------------------------------------------- | --------- | ---------- | -------- | ------------------ |
-| [Traffic light](/problems/traffic-light/)    | ✅        | ✅         | ✅       | -                  |
-| [Whack a Mole](/problems/whack-a-mole/)      | ✅        | ✅         | ✅       | -                  |
-| [File Explorer](/problems/file-explorer/)    | ✅        | ✅         | ✅       | -                  |
-| [Wordle Game](/problems/wordle-game/)        | -         | -          | -        | -                  |
-| [Twitter like](/problems/twitter-like/)      | -         | -          | -        | -                  |
-| [Twitter like II](/problems/twitter-like-2/) | -         | -          | -        | -                  |
+| Title                                         | Completed | Accessible | Reviewed | Solution Explained |
+| --------------------------------------------- | --------- | ---------- | -------- | ------------------ |
+| [Traffic light](/problems/traffic-light/)     | ✅        | ✅         | ✅       | -                  |
+| [Whack a Mole](/problems/whack-a-mole/)       | ✅        | ✅         | ✅       | -                  |
+| [File Explorer](/problems/file-explorer/)     | ✅        | ✅         | ✅       | -                  |
+| [Wordle Game](/problems/wordle-game/)         | -         | -          | -        | -                  |
+| [Use Debounce](/problems/use-debounce/)       | -         | -          | -        | -                  |
+| [Twitter like](/problems/twitter-like/)       | -         | -          | -        | -                  |
+| [Twitter like II](/problems/twitter-like-II/) | -         | -          | -        | -                  |
 
 </center>
 
