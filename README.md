@@ -17,8 +17,7 @@ Each challenge includes:
 | [Whack a Mole](/problems/whack-a-mole/)       | ✅        | ✅         | ✅       | -                  |
 | [File Explorer](/problems/file-explorer/)     | ✅        | ✅         | ✅       | -                  |
 | [Wordle Game](/problems/wordle-game/)         | -         | -          | -        | -                  |
-| [Use Debounce](/problems/use-debounce/)       | -         | -          | -        | -                  |
-| [Twitter like](/problems/twitter-like/)       | -         | -          | -        | -                  |
+| [Twitter like](/problems/twitter-like/)       | ✅        | ✅         | -        | -                  |
 | [Twitter like II](/problems/twitter-like-II/) | -         | -          | -        | -                  |
 
 </center>

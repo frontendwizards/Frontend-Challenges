@@ -9,9 +9,10 @@ Create a "like button" component similar to the one used in Twitter tweets. The 
 ## Requirements
 
 - Implement a debounce mechanism to prevent unnecessary requests.
+- Make debounce from scratch
 - Simulate saving the "like" status by sending a mock request to a backend or using local storage.
 - If the value doesn't change, avoid sending a mock request.
-- Handle errors if the mock request fails.
+- Handle errors if the mock request fails: log the error and reset the like state.
 - Ensure that the "like" status persists on page reload.
 
 ## Example
