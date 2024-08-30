@@ -4,7 +4,7 @@
 
 Create a "like button" component similar to the one used in Twitter tweets. The button should be initially set to "false" and can be toggled by clicking on it.
 
-![File Tree Demo](public/images/demo.png)
+![File Tree Demo](solutions/react-ts/public/images/demo.png)
 
 ## Requirements
 
