@@ -7,9 +7,25 @@ Each challenge includes:
 - Requirements
 - Solution in React with TypeScript.
 - Live demo (Coming soon)
-  <br><br>
 
-<center>
+## Table of Contents
+
+- [Frontend Challenges (WIP)](#frontend-challenges-wip)
+  - [Table of Contents](#table-of-contents)
+  - [Problems](#problems)
+    - [User Interface problems](#user-interface-problems)
+    - [Utility functions problems](#utility-functions-problems)
+  - [Use Cases](#use-cases)
+  - [Getting Started](#getting-started)
+  - [How to check if your solution is accessible](#how-to-check-if-your-solution-is-accessible)
+  - [How can you help?](#how-can-you-help)
+  - [How To Add Your Solution](#how-to-add-your-solution)
+
+## Problems
+
+### User Interface problems
+
+<p align="center">
 
 | Title                                         | Completed | Accessible | Reviewed | Solution Explained |
 | --------------------------------------------- | --------- | ---------- | -------- | ------------------ |
@@ -19,17 +35,15 @@ Each challenge includes:
 | [Wordle Game](/problems/wordle-game/)         | -         | -          | -        | -                  |
 | [Twitter like](/problems/twitter-like/)       | ✅        | ✅         | -        | -                  |
 | [Twitter like II](/problems/twitter-like-II/) | -         | -          | -        | -                  |
-</center>
 
-## Table of Contents
+</p>
 
-- [Frontend Challenges (WIP)](#frontend-challenges-wip)
-  - [Table of Contents](#table-of-contents)
-  - [Use Cases](#use-cases)
-  - [Getting Started](#getting-started)
-  - [How to check if your solution is accessible](#how-to-check-if-your-solution-is-accessible)
-  - [How can you help?](#how-can-you-help)
-  - [How To Add Your Solution](#how-to-add-your-solution)
+### Utility functions problems
+
+<p align="center">
+
+| Title                                     | Completed | Reviewed | tests |
+| ----------------------------------------- | --------- | -------- | ----- |
 
 ## Use Cases
 
@@ -43,7 +57,11 @@ If you wanna work with React, you can use the starter template.
 you can create a new project by using the create_project script:
 
 ```bash
+
+# Example 1
 sh scripts/create_project.sh $PROJECT_NAME
+
+# Example 2
 sh scripts/create_project.sh $PROJECT_NAME $PROJECT_PATH
 
 # $PROJECT_PATH default value is 'problems'

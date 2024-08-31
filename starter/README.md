@@ -2,12 +2,8 @@
 
 ## Problem Description
 
-![File Tree Demo](public/images/demo.png)
+![File Tree Demo](solutions/react-ts/public/images/demo.png)
 
 ## Requirements
 
 ## Example
-
-## Live Demo
-
-[Check out the live demo here](#)
