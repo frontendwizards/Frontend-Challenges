@@ -1,4 +1,4 @@
-# Frontend Challenges (IN PROGRESS)
+# Frontend Challenges (WIP)
 
 This repo contains frontend challenges to help developers improve problem-solving skills and create accessible UIs.
 
@@ -19,8 +19,17 @@ Each challenge includes:
 | [Wordle Game](/problems/wordle-game/)         | -         | -          | -        | -                  |
 | [Twitter like](/problems/twitter-like/)       | ✅        | ✅         | -        | -                  |
 | [Twitter like II](/problems/twitter-like-II/) | -         | -          | -        | -                  |
-
 </center>
+
+## Table of Contents
+
+- [Frontend Challenges (WIP)](#frontend-challenges-wip)
+  - [Table of Contents](#table-of-contents)
+  - [Use Cases](#use-cases)
+  - [Getting Started](#getting-started)
+  - [How to check if your solution is accessible](#how-to-check-if-your-solution-is-accessible)
+  - [How can you help?](#how-can-you-help)
+  - [How To Add Your Solution](#how-to-add-your-solution)
 
 ## Use Cases
 

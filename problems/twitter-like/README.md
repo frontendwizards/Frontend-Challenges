@@ -20,7 +20,9 @@ Create a "like button" component similar to the one used in Twitter tweets. The 
 Here's an example of how the component might be used:
 
 ```tsx
-<LikeButton isLiked={isLiked} setIsLiked={setIsLiked} />
+const [isLiked, setIsLiked] = useState(false);
+
+<LikeButton isLiked={isLiked} setIsLiked={setIsLiked} />;
 ```
 
 The LikeButton component should:
