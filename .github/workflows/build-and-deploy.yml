@@ -15,7 +15,7 @@ jobs:
         node-version: [20.x]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # Uncomment and configure AWS credentials if needed
       # - name: Configure AWS credentials
