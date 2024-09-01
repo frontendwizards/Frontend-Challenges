@@ -45,7 +45,7 @@ jobs:
               problem_name=$(basename "$problem")
               echo "Building $problem_name"
               
-              cd "$problem"
+              cd "$problem/solutions/react-ts"
 
               if npm ci && npm run build; then
                 echo "$problem_name build succeeded"
@@ -58,7 +58,7 @@ jobs:
                 failed_problems+=("$problem_name")
               fi
               
-              cd ../..
+              cd ../../../../
             fi
           done
 
