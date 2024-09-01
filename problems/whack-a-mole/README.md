@@ -1,10 +1,10 @@
-# Whack-a-Mole Challenge
+# Whack a Mole Challenge
 
 ## Problem Description
 
 Create a Whack-a-Mole game where players must click on moles as they randomly appear from holes. The game tests reflexes and timing as players try to achieve the highest score possible within a time limit.
 
-<img src="public/images/demo.png"/>
+![Whack a Mole Demo](solutions/react-ts/public/images/demo.png)
 
 ## Requirements
 

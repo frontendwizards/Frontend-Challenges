@@ -1,5 +1,6 @@
-import classNames from "classnames";
 import { FC, useEffect, useRef, useState } from "react";
+import "./styles.css";
+import { cn } from "./utils/cn";
 
 const GAME_DURATION = 20;
 const GRID_SIZE = 9;
@@ -21,6 +22,8 @@ const App: FC = () => {
   };
 
   const catchHole = (index: number) => {
+    if (isGameOver) return;
+
     setScore((prevScore) => prevScore + 1);
 
     gameGrid[index] = 0;
@@ -81,7 +84,7 @@ const App: FC = () => {
   const timeLeft = GAME_DURATION - Math.ceil(timer);
 
   return (
-    <main className="flex h-full min-h-[100vh] flex-col items-center !bg-[#5e8484] p-2 pt-10 text-white">
+    <main className=" flex h-full min-h-[100vh] flex-col items-center !bg-[#5e8484] p-2 pt-10 text-white">
       <div className="w-[60rem] uppercase">
         <div className="flex h-10 w-full items-center justify-around">
           <span className="text-2xl font-bold">Score : {score}</span>
@@ -106,8 +109,9 @@ const App: FC = () => {
               className="relative h-[12rem] flex-[0_1_25%] overflow-hidden"
             >
               <button
+                aria-label={`Mole ${index + 1}`}
                 onClick={() => catchHole(index)}
-                className={classNames([
+                className={cn([
                   "h-40 w-40 translate-x-[15%] translate-y-[100%] select-none duration-100 ease-in",
                   {
                     "translate-y-[20%]": spot === 1,

@@ -4,7 +4,7 @@
 
 Create a simulated traffic light. The traffic light should cycle through red, yellow, and green lights automatically, mimicking the behavior of a real traffic signal.
 
-<img src="public/images/demo.png"/>
+![Traffic Light Demo](solutions/react-ts/public/images/demo.png)
 
 ## Requirements
 
