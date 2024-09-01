@@ -41,14 +41,14 @@ code {
   align-items: center;
   color: white;
   font-family: extrabold;
-  transition-duration: .4s;
+  transition-duration: 100ms;
 }
 
-.cell-filled {
+.cell-animating {
   border-color: transparent;
 }
 
-.cell-filled2 {
+.cell-filled {
   animation: scale-on-fill 100ms ease-in;
 }
 

@@ -14,8 +14,8 @@ const WORDS = Object.freeze([
   "REACT",
 ]);
 
-const wordLength = 5;
-const tries = 1;
+const WORD_LENGTH = 5;
+const TRIES = 1;
 
 enum CELL_COLOR {
   DEFAULT = "light-gray",
@@ -24,16 +24,22 @@ enum CELL_COLOR {
   PRESENT = "yellow",
 }
 
-interface CellData {
+enum GAME_STATUS {
+  WON = "WON",
+  LOST = "LOST",
+  PLAYING = "PLAYING",
+}
+
+type CellData = {
   value: string | null;
   bgClass: CELL_COLOR;
-}
+};
 
 type Grid = CellData[][];
 
 const generateInitialGridState = (): Grid =>
-  Array.from({ length: tries }, () =>
-    Array.from({ length: wordLength }, () => ({
+  Array.from({ length: TRIES }, () =>
+    Array.from({ length: WORD_LENGTH }, () => ({
       value: null,
       bgClass: CELL_COLOR.DEFAULT,
     }))
@@ -50,8 +56,8 @@ const Cell: React.FC<CellProps> = ({ value, backgroundClass }) => {
       className={[
         "cell",
         backgroundClass,
-        backgroundClass !== CELL_COLOR.DEFAULT && "cell-filled",
-        value !== null && "cell-filled2",
+        backgroundClass !== CELL_COLOR.DEFAULT && "cell-animating",
+        value !== null && "cell-filled",
       ].join(" ")}
     >
       {value}
@@ -72,17 +78,6 @@ const getCurrentWord = (currentRow: CellData[]): string => {
   return result;
 };
 
-const copy = (prevData: Grid): Grid => {
-  const updatedData = prevData.map((row) => row.slice());
-  return updatedData;
-};
-
-enum GAME_STATUS {
-  WON = "WON",
-  LOST = "LOST",
-  PLAYING = "PLAYING",
-}
-
 const getRandomWordIndex = () => Math.floor(Math.random() * WORDS.length);
 
 const showGameStatusMessage = (
@@ -90,8 +85,8 @@ const showGameStatusMessage = (
   currentWord: string
 ) => {
   const gameStatusMessage: Record<GAME_STATUS, string> = {
-    [GAME_STATUS.LOST]: "Congratulations! You won 🎉",
-    [GAME_STATUS.WON]: `The word was ${currentWord}.`,
+    [GAME_STATUS.WON]: "Congratulations! You won 🎉",
+    [GAME_STATUS.LOST]: `The word was ${currentWord}.`,
     [GAME_STATUS.PLAYING]: "",
   };
 
@@ -104,30 +99,25 @@ export default function App() {
   const [gameStatus, setGameStatus] = useState<GAME_STATUS>(
     GAME_STATUS.PLAYING
   );
-
   const [isColoring, setIsColoring] = useState(false);
   const [currentWordIndex, setCurrentWordIndex] = useState(
     getRandomWordIndex()
   );
+
   const isGameOver = gameStatus !== GAME_STATUS.PLAYING;
   const wordToGuess = WORDS[currentWordIndex];
 
-  const updateData = (newData: Grid = data) => {
-    setData(copy(newData));
-  };
-
-  const updateRowColors = (
-    currentRowData: CellData[],
-    bgColorsList: CELL_COLOR[]
-  ): Promise<void> => {
+  const updateRowColors = (bgColorsList: CELL_COLOR[]): Promise<void> => {
     return new Promise((resolve) => {
       let index = 0;
       const interval = setInterval(() => {
-        currentRowData[index].bgClass = bgColorsList[index];
-        index++;
-        updateData();
+        const newData = data.slice();
+        newData[currentRow][index].bgClass = bgColorsList[index];
+        setData(newData);
 
-        if (index === wordLength) {
+        index++;
+
+        if (index === WORD_LENGTH) {
           clearInterval(interval);
           resolve();
         }
@@ -138,43 +128,62 @@ export default function App() {
   const submitCurrentWord = async (currentWord: string): Promise<boolean> => {
     setIsColoring(true);
     let bgColorsList: CELL_COLOR[] = [];
-    let isMatching = true;
+    let isMatching = currentWord === wordToGuess;
 
-    if (currentWord === wordToGuess) {
+    if (isMatching) {
       bgColorsList = Array(wordToGuess.length).fill(CELL_COLOR.CORRECT);
     } else {
       bgColorsList = currentWord.split("").map((character, index) => {
-        if (wordToGuess[index] === character) {
-          return CELL_COLOR.CORRECT;
-        }
-        isMatching = false;
-        if (wordToGuess.includes(character)) {
-          return CELL_COLOR.PRESENT;
-        }
+        if (wordToGuess[index] === character) return CELL_COLOR.CORRECT;
+        if (wordToGuess.includes(character)) return CELL_COLOR.PRESENT;
         return CELL_COLOR.ABSENT;
       });
     }
 
-    await updateRowColors(data[currentRow], bgColorsList);
-
+    await updateRowColors(bgColorsList);
     setIsColoring(false);
-
     return isMatching;
   };
 
-  const endGame = (isWon: boolean = true) => {
-    const newGameStatus = isWon ? GAME_STATUS.WON : GAME_STATUS.LOST;
-    setGameStatus(newGameStatus);
+  const endGame = (isWon = true) => {
+    setGameStatus(isWon ? GAME_STATUS.WON : GAME_STATUS.LOST);
   };
 
-  const removeLastCharacter = (currentWord: string) => {
-    if (currentWord.length === 0) {
+  const removeLastCharacter = () => {
+    const newData = data.slice();
+    const currentWord = getCurrentWord(newData[currentRow]);
+    if (currentWord.length > 0) {
+      newData[currentRow][currentWord.length - 1].value = null;
+    }
+    setData(newData);
+  };
+
+  const addCharacter = (char: string) => {
+    const newData = data.slice();
+    const currentWord = getCurrentWord(newData[currentRow]);
+
+    if (currentWord.length < WORD_LENGTH) {
+      newData[currentRow][currentWord.length].value = char.toUpperCase();
+    }
+
+    setData(newData);
+  };
+
+  const handleEnterKey = async () => {
+    const currentWord = getCurrentWord(data[currentRow]);
+    if (currentWord.length !== WORD_LENGTH) {
       return;
     }
 
-    const newData = data.slice();
-    newData[currentRow][currentWord.length - 1].value = null;
-    setData(newData);
+    const isMatching = await submitCurrentWord(currentWord);
+
+    if (isMatching) {
+      endGame(true);
+    } else if (currentRow === TRIES - 1) {
+      endGame(false);
+    } else {
+      setCurrentRow((prevRow) => prevRow + 1);
+    }
   };
 
   const reset = () => {
@@ -187,37 +196,17 @@ export default function App() {
 
   useEffect(() => {
     const handleKeyPress = async (event: KeyboardEvent) => {
-      if (isGameOver || isColoring) {
-        return;
-      }
+      if (isGameOver || isColoring) return;
 
       const typedKey = event.key;
-      let currentWord = getCurrentWord(data[currentRow]);
 
       if (typedKey === "Backspace") {
-        return removeLastCharacter(currentWord);
+        removeLastCharacter();
+      } else if (typedKey === "Enter") {
+        await handleEnterKey();
+      } else if (typedKey.length === 1 && /[a-zA-Z]/.test(typedKey)) {
+        addCharacter(typedKey);
       }
-      if (currentWord.length === wordLength) {
-        if (typedKey === "Enter") {
-          const isMatching = await submitCurrentWord(currentWord);
-          if (isMatching) return endGame();
-          // used all tries
-          if (currentRow === tries - 1) {
-            return endGame(false);
-          }
-          // go to next row
-          setCurrentRow(currentRow + 1);
-        }
-        return;
-      }
-
-      if (typedKey.length !== 1 || !/[a-zA-Z]/.test(typedKey)) {
-        return;
-      }
-
-      const newData = data.slice();
-      newData[currentRow][currentWord.length].value = typedKey.toUpperCase();
-      setData(newData);
     };
 
     window.addEventListener("keydown", handleKeyPress, false);
@@ -225,7 +214,7 @@ export default function App() {
   }, [currentRow, data, gameStatus, isColoring]);
 
   return (
-    <div className="container">
+    <div className="container" role="grid" aria-label="Wordle game grid">
       <h1 className="text-7xl mb-20">WORDLE</h1>
       <div className="flex justify-between items-center w-[24rem] mb-8 h-[3rem]">
         {isGameOver && (
