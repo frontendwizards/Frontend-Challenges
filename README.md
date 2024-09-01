@@ -17,7 +17,7 @@ Each challenge includes:
     - [Utility functions problems](#utility-functions-problems)
   - [Use Cases](#use-cases)
   - [Getting Started](#getting-started)
-  - [How to check if your solution is accessible](#how-to-check-if-your-solution-is-accessible)
+  - [How to check if your solution (UI) is accessible](#how-to-check-if-your-solution-ui-is-accessible)
   - [How can you help?](#how-can-you-help)
   - [How To Add Your Solution](#how-to-add-your-solution)
 
@@ -67,7 +67,7 @@ source scripts/create_project.sh $PROJECT_NAME $PROJECT_PATH
 # $PROJECT_PATH default value is 'problems'
 ```
 
-## How to check if your solution is accessible
+## How to check if your solution (UI) is accessible
 
 You can use automated accessibility checkers like **axe-core** to detect most accessibility issues.
 

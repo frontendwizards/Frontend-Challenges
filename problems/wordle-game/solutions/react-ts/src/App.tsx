@@ -22,7 +22,14 @@ const ABSENT_CELL_COLOR = "dark-gray";
 const CORRECT_CELL_COLOR = "green";
 const PRESENT_CELL_COLOR = "yellow";
 
-const generateInitialGridSate = () =>
+interface CellData {
+  value: string | null;
+  bgClass: string;
+}
+
+type Grid = CellData[][];
+
+const generateInitialGridState = (): Grid =>
   Array.from({ length: tries }, () =>
     Array.from({ length: wordLength }, () => ({
       value: null,
@@ -30,21 +37,26 @@ const generateInitialGridSate = () =>
     }))
   );
 
-const Cell = ({ value, backgroundClass }) => {
+interface CellProps {
+  value: string | null;
+  backgroundClass: string;
+}
+
+const Cell: React.FC<CellProps> = ({ value, backgroundClass }) => {
   return (
     <div
       className={[
         "cell",
         backgroundClass,
-        backgroundClass !== DEFAULT_CELL_COLOR && " cell-filled",
+        backgroundClass !== DEFAULT_CELL_COLOR && "cell-filled",
       ].join(" ")}
     >
-      {value}{" "}
+      {value}
     </div>
   );
 };
 
-const getCurrentWord = (currentRow) => {
+const getCurrentWord = (currentRow: CellData[]): string => {
   let result = "";
 
   for (let i = 0; i < currentRow.length; i++) {
@@ -57,33 +69,38 @@ const getCurrentWord = (currentRow) => {
   return result;
 };
 
-const copy = (prevData) => {
+const copy = (prevData: Grid): Grid => {
   const updatedData = prevData.map((row) => row.slice());
   return updatedData;
 };
 
-const GAME_STATUS = Object.freeze({
-  WON: "Won",
-  LOST: "Lost",
-  PLAYING: "Playing",
-});
+enum GAME_STATUS {
+  WON = "Won",
+  LOST = "Lost",
+  PLAYING = "Playing",
+}
 
 export default function App() {
-  let [currentRow, setCurrentRow] = useState(0);
-  let [data, setData] = useState(generateInitialGridSate());
-  let [gameStatus, setGameStatus] = useState(GAME_STATUS.PLAYING);
-  let [isColoring, setIsColoring] = useState(false);
+  const [currentRow, setCurrentRow] = useState(0);
+  const [data, setData] = useState<Grid>(generateInitialGridState());
+  const [gameStatus, setGameStatus] = useState<GAME_STATUS>(
+    GAME_STATUS.PLAYING
+  );
+
+  const [isColoring, setIsColoring] = useState(false);
   const targetWord = WORDS[0];
 
-  const updateData = (newData = data) => {
+  const updateData = (newData: Grid = data) => {
     setData(copy(newData));
   };
 
-  const colorCurrentRow = (currentRowData, bgColorsList) => {
+  const colorCurrentRow = (
+    currentRowData: CellData[],
+    bgColorsList: string[]
+  ): Promise<void> => {
     return new Promise((resolve) => {
       let index = 0;
       const interval = setInterval(() => {
-        // TODO : copy first
         currentRowData[index].bgClass = bgColorsList[index];
         index++;
         updateData();
@@ -96,9 +113,9 @@ export default function App() {
     });
   };
 
-  const submitCurrentWord = async (currentWord) => {
+  const submitCurrentWord = async (currentWord: string): Promise<boolean> => {
     setIsColoring(true);
-    let bgColorsList = [];
+    let bgColorsList: string[] = [];
     let isMatching = true;
 
     if (currentWord === targetWord) {
@@ -123,12 +140,12 @@ export default function App() {
     return isMatching;
   };
 
-  const endGame = (isWon = true) => {
+  const endGame = (isWon: boolean = true) => {
     const newGameStatus = isWon ? GAME_STATUS.WON : GAME_STATUS.LOST;
     setGameStatus(newGameStatus);
   };
 
-  const removeLastCharacter = (currentWord) => {
+  const removeLastCharacter = (currentWord: string) => {
     if (currentWord.length === 0) {
       return;
     }
@@ -140,20 +157,22 @@ export default function App() {
 
   const reset = () => {
     setCurrentRow(0);
-    setData(generateInitialGridSate());
+    setData(generateInitialGridState());
     setGameStatus(GAME_STATUS.PLAYING);
     setIsColoring(false);
   };
 
+  const isGameOver = gameStatus !== GAME_STATUS.PLAYING;
+
   useEffect(() => {
-    const handleKeyPress = async (e) => {
-      if (gameStatus !== GAME_STATUS.PLAYING || isColoring) {
+    const handleKeyPress = async (e: KeyboardEvent) => {
+      if (isGameOver || isColoring) {
         return;
       }
 
       const typedKey = e.key;
-
       let currentWord = getCurrentWord(data[currentRow]);
+
       if (typedKey === "Backspace") {
         return removeLastCharacter(currentWord);
       }
@@ -185,20 +204,31 @@ export default function App() {
 
   return (
     <div className="container">
-      <h1>WORDLE</h1>
-      <h2>{gameStatus}</h2>
+      <h1 className="text-7xl mb-20">WORDLE</h1>
+      {!isGameOver && (
+        <div className="flex justify-between items-center w-[14rem] mb-4 h-[3rem]"> 
+        {/* TODO: remove height? */}
+          <span className="mr-4">{gameStatus}</span>
+
+          <button
+            onClick={reset}
+            className="bg-white rounded-md text-black p-2"
+          >
+            Reset
+          </button>
+        </div>
+      )}
 
       <div className="grid">
         {data.map((row, rowIndex) =>
           row.map(({ value, bgClass }, index) => (
             <Cell
-              key={rowIndex + "-" + index}
+              key={`${rowIndex}-${index}`}
               value={value}
               backgroundClass={bgClass}
             />
           ))
         )}
-        <button onClick={reset}>Reset</button>
       </div>
     </div>
   );
