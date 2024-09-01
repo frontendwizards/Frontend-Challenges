@@ -41,11 +41,24 @@ code {
   align-items: center;
   color: white;
   font-family: extrabold;
-  transition-duration: 1s;
+  transition-duration: .4s;
 }
 
 .cell-filled {
   border-color: transparent;
+}
+
+.cell-filled2 {
+  animation: scale-on-fill 100ms ease-in;
+}
+
+@keyframes scale-on-fill {
+  70% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .light-gray {

@@ -1,6 +1,6 @@
-# Frontend Challenges (WIP)
+# Frontend Challenges (WORK IN PROGRESS)
 
-This repo contains frontend challenges to help developers improve problem-solving skills and create accessible UIs.
+This repo contains frontend challenges to help developers improve problem-solving skills and create performant, accessible UIs.
 
 Each challenge includes:
 
@@ -10,7 +10,7 @@ Each challenge includes:
 
 ## Table of Contents
 
-- [Frontend Challenges (WIP)](#frontend-challenges-wip)
+- [Frontend Challenges (WORK IN PROGRESS)](#frontend-challenges-work-in-progress)
   - [Table of Contents](#table-of-contents)
   - [Problems](#problems)
     - [User Interface problems](#user-interface-problems)

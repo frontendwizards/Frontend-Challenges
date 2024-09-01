@@ -15,16 +15,18 @@ const WORDS = Object.freeze([
 ]);
 
 const wordLength = 5;
-const tries = 6;
+const tries = 1;
 
-const DEFAULT_CELL_COLOR = "light-gray";
-const ABSENT_CELL_COLOR = "dark-gray";
-const CORRECT_CELL_COLOR = "green";
-const PRESENT_CELL_COLOR = "yellow";
+enum CELL_COLOR {
+  DEFAULT = "light-gray",
+  ABSENT = "dark-gray",
+  CORRECT = "green",
+  PRESENT = "yellow",
+}
 
 interface CellData {
   value: string | null;
-  bgClass: string;
+  bgClass: CELL_COLOR;
 }
 
 type Grid = CellData[][];
@@ -33,13 +35,13 @@ const generateInitialGridState = (): Grid =>
   Array.from({ length: tries }, () =>
     Array.from({ length: wordLength }, () => ({
       value: null,
-      bgClass: DEFAULT_CELL_COLOR,
+      bgClass: CELL_COLOR.DEFAULT,
     }))
   );
 
 interface CellProps {
   value: string | null;
-  backgroundClass: string;
+  backgroundClass: CELL_COLOR;
 }
 
 const Cell: React.FC<CellProps> = ({ value, backgroundClass }) => {
@@ -48,7 +50,8 @@ const Cell: React.FC<CellProps> = ({ value, backgroundClass }) => {
       className={[
         "cell",
         backgroundClass,
-        backgroundClass !== DEFAULT_CELL_COLOR && "cell-filled",
+        backgroundClass !== CELL_COLOR.DEFAULT && "cell-filled",
+        value !== null && "cell-filled2",
       ].join(" ")}
     >
       {value}
@@ -75,12 +78,26 @@ const copy = (prevData: Grid): Grid => {
 };
 
 enum GAME_STATUS {
-  WON = "Won",
-  LOST = "Lost",
-  PLAYING = "Playing",
+  WON = "WON",
+  LOST = "LOST",
+  PLAYING = "PLAYING",
 }
 
 const getRandomWordIndex = () => Math.floor(Math.random() * WORDS.length);
+
+const showGameStatusMessage = (
+  currentGameStatus: GAME_STATUS,
+  currentWord: string
+) => {
+  const gameStatusMessage: Record<GAME_STATUS, string> = {
+    [GAME_STATUS.LOST]: "Congratulations! You won 🎉",
+    [GAME_STATUS.WON]: `The word was ${currentWord}.`,
+    [GAME_STATUS.PLAYING]: "",
+  };
+
+  return gameStatusMessage[currentGameStatus];
+};
+
 export default function App() {
   const [currentRow, setCurrentRow] = useState(0);
   const [data, setData] = useState<Grid>(generateInitialGridState());
@@ -93,15 +110,15 @@ export default function App() {
     getRandomWordIndex()
   );
   const isGameOver = gameStatus !== GAME_STATUS.PLAYING;
-  const targetWord = WORDS[currentWordIndex];
+  const wordToGuess = WORDS[currentWordIndex];
 
   const updateData = (newData: Grid = data) => {
     setData(copy(newData));
   };
 
-  const colorCurrentRow = (
+  const updateRowColors = (
     currentRowData: CellData[],
-    bgColorsList: string[]
+    bgColorsList: CELL_COLOR[]
   ): Promise<void> => {
     return new Promise((resolve) => {
       let index = 0;
@@ -120,25 +137,25 @@ export default function App() {
 
   const submitCurrentWord = async (currentWord: string): Promise<boolean> => {
     setIsColoring(true);
-    let bgColorsList: string[] = [];
+    let bgColorsList: CELL_COLOR[] = [];
     let isMatching = true;
 
-    if (currentWord === targetWord) {
-      bgColorsList = Array(targetWord.length).fill(CORRECT_CELL_COLOR);
+    if (currentWord === wordToGuess) {
+      bgColorsList = Array(wordToGuess.length).fill(CELL_COLOR.CORRECT);
     } else {
       bgColorsList = currentWord.split("").map((character, index) => {
-        if (targetWord[index] === character) {
-          return CORRECT_CELL_COLOR;
+        if (wordToGuess[index] === character) {
+          return CELL_COLOR.CORRECT;
         }
         isMatching = false;
-        if (targetWord.includes(character)) {
-          return PRESENT_CELL_COLOR;
+        if (wordToGuess.includes(character)) {
+          return CELL_COLOR.PRESENT;
         }
-        return ABSENT_CELL_COLOR;
+        return CELL_COLOR.ABSENT;
       });
     }
 
-    await colorCurrentRow(data[currentRow], bgColorsList);
+    await updateRowColors(data[currentRow], bgColorsList);
 
     setIsColoring(false);
 
@@ -155,7 +172,7 @@ export default function App() {
       return;
     }
 
-    const newData = copy(data);
+    const newData = data.slice();
     newData[currentRow][currentWord.length - 1].value = null;
     setData(newData);
   };
@@ -184,6 +201,7 @@ export default function App() {
         if (typedKey === "Enter") {
           const isMatching = await submitCurrentWord(currentWord);
           if (isMatching) return endGame();
+          // used all tries
           if (currentRow === tries - 1) {
             return endGame(false);
           }
@@ -197,7 +215,7 @@ export default function App() {
         return;
       }
 
-      const newData = copy(data);
+      const newData = data.slice();
       newData[currentRow][currentWord.length].value = typedKey.toUpperCase();
       setData(newData);
     };
@@ -209,12 +227,12 @@ export default function App() {
   return (
     <div className="container">
       <h1 className="text-7xl mb-20">WORDLE</h1>
-      <div className="flex justify-between items-center w-[14rem] mb-4 h-[3rem]">
+      <div className="flex justify-between items-center w-[24rem] mb-8 h-[3rem]">
         {isGameOver && (
           <>
-            {/* TODO: remove height? */}
-            <span className="mr-4">{gameStatus}</span>
-
+            <span className="mr-4">
+              {showGameStatusMessage(gameStatus, wordToGuess)}
+            </span>
             <button
               onClick={reset}
               className="bg-white rounded-md text-black p-2"
