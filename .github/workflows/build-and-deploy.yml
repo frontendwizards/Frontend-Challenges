@@ -1,10 +1,10 @@
 name: Build and Deploy Frontend Challenges
 
-# on:
-#   push:
-#     branches: [main]
-#   pull_request:
-#     branches: [main]
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   build-and-deploy:
@@ -17,12 +17,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
+      # - name: Configure AWS credentials
+      #   uses: aws-actions/configure-aws-credentials@v1
+      #   with:
+      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     aws-region: us-east-1
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -52,7 +52,7 @@ jobs:
                 success_problems+=("$problem_name")
 
                 # Upload to S3
-                aws s3 sync build/ s3://your-bucket-name/$problem_name/ --delete
+                # aws s3 sync build/ s3://your-bucket-name/$problem_name/ --delete
               else
                 echo "$problem_name build failed"
                 failed_problems+=("$problem_name")
@@ -78,6 +78,6 @@ jobs:
             echo "| $problem | ❌ | - |" >> $GITHUB_STEP_SUMMARY
           done
 
-      - name: Invalidate CloudFront
-        run: |
-          aws cloudfront create-invalidation --distribution-id YOUR_DISTRIBUTION_ID --paths "/*"
+      # - name: Invalidate CloudFront
+      #   run: |
+      #     aws cloudfront create-invalidation --distribution-id YOUR_DISTRIBUTION_ID --paths "/*"

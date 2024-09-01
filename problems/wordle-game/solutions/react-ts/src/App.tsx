@@ -80,6 +80,7 @@ enum GAME_STATUS {
   PLAYING = "Playing",
 }
 
+const getRandomWordIndex = () => Math.floor(Math.random() * WORDS.length);
 export default function App() {
   const [currentRow, setCurrentRow] = useState(0);
   const [data, setData] = useState<Grid>(generateInitialGridState());
@@ -88,7 +89,11 @@ export default function App() {
   );
 
   const [isColoring, setIsColoring] = useState(false);
-  const targetWord = WORDS[0];
+  const [currentWordIndex, setCurrentWordIndex] = useState(
+    getRandomWordIndex()
+  );
+  const isGameOver = gameStatus !== GAME_STATUS.PLAYING;
+  const targetWord = WORDS[currentWordIndex];
 
   const updateData = (newData: Grid = data) => {
     setData(copy(newData));
@@ -160,17 +165,16 @@ export default function App() {
     setData(generateInitialGridState());
     setGameStatus(GAME_STATUS.PLAYING);
     setIsColoring(false);
+    setCurrentWordIndex(getRandomWordIndex());
   };
 
-  const isGameOver = gameStatus !== GAME_STATUS.PLAYING;
-
   useEffect(() => {
-    const handleKeyPress = async (e: KeyboardEvent) => {
+    const handleKeyPress = async (event: KeyboardEvent) => {
       if (isGameOver || isColoring) {
         return;
       }
 
-      const typedKey = e.key;
+      const typedKey = event.key;
       let currentWord = getCurrentWord(data[currentRow]);
 
       if (typedKey === "Backspace") {
@@ -205,19 +209,21 @@ export default function App() {
   return (
     <div className="container">
       <h1 className="text-7xl mb-20">WORDLE</h1>
-      {!isGameOver && (
-        <div className="flex justify-between items-center w-[14rem] mb-4 h-[3rem]"> 
-        {/* TODO: remove height? */}
-          <span className="mr-4">{gameStatus}</span>
+      <div className="flex justify-between items-center w-[14rem] mb-4 h-[3rem]">
+        {isGameOver && (
+          <>
+            {/* TODO: remove height? */}
+            <span className="mr-4">{gameStatus}</span>
 
-          <button
-            onClick={reset}
-            className="bg-white rounded-md text-black p-2"
-          >
-            Reset
-          </button>
-        </div>
-      )}
+            <button
+              onClick={reset}
+              className="bg-white rounded-md text-black p-2"
+            >
+              Reset
+            </button>
+          </>
+        )}
+      </div>
 
       <div className="grid">
         {data.map((row, rowIndex) =>
