@@ -4,7 +4,7 @@
 
 Build a clone of the popular word game **Wordle**, where players have six attempts to guess a five-letter word. Feedback is given for each guess in the form of colored tiles indicating when letters match or occupy the correct position.
 
-<img src="public/images/demo.png"/>
+<img src="solutions/react-ts/public/images/demo.png"/>
 
 ## Requirements
 

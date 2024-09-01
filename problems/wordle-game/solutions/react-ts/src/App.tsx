@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./index.css";
+import "./styles.css";
 
 const WORDS = Object.freeze([
   "APPLE",

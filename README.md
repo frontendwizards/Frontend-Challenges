@@ -33,7 +33,7 @@ Each challenge includes:
 | [Whack a Mole](/problems/whack-a-mole/)       | ✅        | ✅         | ✅       | -                  |
 | [File Explorer](/problems/file-explorer/)     | ✅        | ✅         | ✅       | -                  |
 | [Wordle Game](/problems/wordle-game/)         | -         | -          | -        | -                  |
-| [Twitter like](/problems/twitter-like/)       | ✅        | ✅         | -        | -                  |
+| [Twitter like](/problems/twitter-like/)       | ✅        | ✅         | ✅       | -                  |
 | [Twitter like II](/problems/twitter-like-II/) | -         | -          | -        | -                  |
 
 </p>
@@ -59,10 +59,10 @@ you can create a new project by using the create_project script:
 ```bash
 
 # Example 1
-sh scripts/create_project.sh $PROJECT_NAME
+source scripts/create_project.sh $PROJECT_NAME
 
 # Example 2
-sh scripts/create_project.sh $PROJECT_NAME $PROJECT_PATH
+source scripts/create_project.sh $PROJECT_NAME $PROJECT_PATH
 
 # $PROJECT_PATH default value is 'problems'
 ```
