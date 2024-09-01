@@ -32,7 +32,7 @@ Each challenge includes:
 | [Traffic light](/problems/traffic-light/)     | ✅        | ✅         | ✅       | -                  |
 | [Whack a Mole](/problems/whack-a-mole/)       | ✅        | ✅         | ✅       | -                  |
 | [File Explorer](/problems/file-explorer/)     | ✅        | ✅         | ✅       | -                  |
-| [Wordle Game](/problems/wordle-game/)         | -         | -          | -        | -                  |
+| [Wordle Game](/problems/wordle-game/)         | ✅        | ✅         | ✅       | -                  |
 | [Twitter like](/problems/twitter-like/)       | ✅        | ✅         | ✅       | -                  |
 | [Twitter like II](/problems/twitter-like-II/) | -         | -          | -        | -                  |
 

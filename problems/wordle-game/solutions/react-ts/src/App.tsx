@@ -15,7 +15,7 @@ const WORDS = Object.freeze([
 ]);
 
 const WORD_LENGTH = 5;
-const TRIES = 1;
+const TRIES = 6;
 
 enum CELL_COLOR {
   DEFAULT = "light-gray",
