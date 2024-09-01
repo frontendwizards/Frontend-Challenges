@@ -42,8 +42,8 @@ Each challenge includes:
 
 <p align="center">
 
-| Title                                     | Completed | Reviewed | tests |
-| ----------------------------------------- | --------- | -------- | ----- |
+| Title | Completed | Tests | Reviewed |
+| ----- | --------- | ----- | -------- |
 
 ## Use Cases
 

@@ -51,7 +51,7 @@ function LikeButton({
 
   const [debouncedLikeSave, clearDebounce] = debouncedLike.current;
 
-  const toggleLike = () => {
+  const toggleLike = async () => {
     clearDebounce();
 
     const newIsLiked = !isLiked;
@@ -65,13 +65,7 @@ function LikeButton({
 
   // cleaning up on unmount
   useEffect(() => {
-    const handleBeforeUnload = () => saveLikeValue(isLiked);
-    window.addEventListener("beforeunload", handleBeforeUnload);
-
-    return () => {
-      clearDebounce();
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
+    return () => clearDebounce();
   }, []);
 
   return (
