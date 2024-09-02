@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accessible Grid</title>
+    <style>
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+
+      .grid-item {
+        padding: 20px;
+        text-align: center;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        cursor: pointer;
+      }
+
+      .grid-item:focus {
+        outline: 2px solid #007bff;
+        background-color: #e7f0fd;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Accessible Grid Example</h1>
+
+    <div class="grid-container" role="grid" aria-label="Example grid">
+      <div role="row" class="grid-row">
+        <div role="gridcell" tabindex="0" class="grid-item" aria-label="Item 1">
+          1
+        </div>
+        <div role="gridcell" tabindex="0" class="grid-item" aria-label="Item 2">
+          2
+        </div>
+        <div role="gridcell" tabindex="0" class="grid-item" aria-label="Item 3">
+          3
+        </div>
+      </div>
+      <div role="row" class="grid-row">
+        <div role="gridcell" tabindex="0" class="grid-item" aria-label="Item 4">
+          4
+        </div>
+        <div role="gridcell" tabindex="0" class="grid-item" aria-label="Item 5">
+          5
+        </div>
+        <div role="gridcell" tabindex="0" class="grid-item" aria-label="Item 6">
+          6
+        </div>
+      </div>
+      <div role="row" class="grid-row">
+        <div role="gridcell" tabindex="0" class="grid-item" aria-label="Item 7">
+          7
+        </div>
+        <div role="gridcell" tabindex="0" class="grid-item" aria-label="Item 8">
+          8
+        </div>
+        <div role="gridcell" tabindex="0" class="grid-item" aria-label="Item 9">
+          9
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

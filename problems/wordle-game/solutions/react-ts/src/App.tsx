@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles.css";
 
-const WORDS = Object.freeze([
+const WORDS = [
   "APPLE",
   "BEAST",
   "FAINT",
@@ -12,7 +12,7 @@ const WORDS = Object.freeze([
   "PASTE",
   "TOWER",
   "REACT",
-]);
+];
 
 const WORD_LENGTH = 5;
 const TRIES = 6;
@@ -32,7 +32,7 @@ enum GAME_STATUS {
 
 type CellData = {
   value: string | null;
-  bgClass: CELL_COLOR;
+  bgColor: CELL_COLOR;
 };
 
 type Grid = CellData[][];
@@ -41,7 +41,7 @@ const generateInitialGridState = (): Grid =>
   Array.from({ length: TRIES }, () =>
     Array.from({ length: WORD_LENGTH }, () => ({
       value: null,
-      bgClass: CELL_COLOR.DEFAULT,
+      bgColor: CELL_COLOR.DEFAULT,
     }))
   );
 
@@ -65,22 +65,12 @@ const Cell: React.FC<CellProps> = ({ value, backgroundClass }) => {
   );
 };
 
-const getCurrentWord = (currentRow: CellData[]): string => {
-  let result = "";
+const getWordFromRow = (row: CellData[]): string =>
+  row.reduce((word, cell) => word + (cell.value ?? ""), "");
 
-  for (let i = 0; i < currentRow.length; i++) {
-    if (currentRow[i].value === null) {
-      break;
-    }
-    result += currentRow[i].value;
-  }
+const getRandomWord = () => WORDS[Math.floor(Math.random() * WORDS.length)];
 
-  return result;
-};
-
-const getRandomWordIndex = () => Math.floor(Math.random() * WORDS.length);
-
-const showGameStatusMessage = (
+const getGameStatusMessage = (
   currentGameStatus: GAME_STATUS,
   currentWord: string
 ) => {
@@ -95,24 +85,21 @@ const showGameStatusMessage = (
 
 export default function App() {
   const [currentRow, setCurrentRow] = useState(0);
-  const [data, setData] = useState<Grid>(generateInitialGridState());
+  const [grid, setData] = useState<Grid>(generateInitialGridState());
   const [gameStatus, setGameStatus] = useState<GAME_STATUS>(
     GAME_STATUS.PLAYING
   );
   const [isColoring, setIsColoring] = useState(false);
-  const [currentWordIndex, setCurrentWordIndex] = useState(
-    getRandomWordIndex()
-  );
+  const [wordToGuess, setWordToGuess] = useState(getRandomWord());
 
   const isGameOver = gameStatus !== GAME_STATUS.PLAYING;
-  const wordToGuess = WORDS[currentWordIndex];
 
   const updateRowColors = (bgColorsList: CELL_COLOR[]): Promise<void> => {
     return new Promise((resolve) => {
       let index = 0;
       const interval = setInterval(() => {
-        const newData = data.slice();
-        newData[currentRow][index].bgClass = bgColorsList[index];
+        const newData = grid.slice();
+        newData[currentRow][index].bgColor = bgColorsList[index];
         setData(newData);
 
         index++;
@@ -150,8 +137,8 @@ export default function App() {
   };
 
   const removeLastCharacter = () => {
-    const newData = data.slice();
-    const currentWord = getCurrentWord(newData[currentRow]);
+    const newData = grid.slice();
+    const currentWord = getWordFromRow(newData[currentRow]);
     if (currentWord.length > 0) {
       newData[currentRow][currentWord.length - 1].value = null;
     }
@@ -159,8 +146,8 @@ export default function App() {
   };
 
   const addCharacter = (char: string) => {
-    const newData = data.slice();
-    const currentWord = getCurrentWord(newData[currentRow]);
+    const newData = grid.slice();
+    const currentWord = getWordFromRow(newData[currentRow]);
 
     if (currentWord.length < WORD_LENGTH) {
       newData[currentRow][currentWord.length].value = char.toUpperCase();
@@ -170,7 +157,7 @@ export default function App() {
   };
 
   const handleEnterKey = async () => {
-    const currentWord = getCurrentWord(data[currentRow]);
+    const currentWord = getWordFromRow(grid[currentRow]);
     if (currentWord.length !== WORD_LENGTH) {
       return;
     }
@@ -191,7 +178,7 @@ export default function App() {
     setData(generateInitialGridState());
     setGameStatus(GAME_STATUS.PLAYING);
     setIsColoring(false);
-    setCurrentWordIndex(getRandomWordIndex());
+    setWordToGuess(getRandomWord());
   };
 
   useEffect(() => {
@@ -211,38 +198,48 @@ export default function App() {
 
     window.addEventListener("keydown", handleKeyPress, false);
     return () => window.removeEventListener("keydown", handleKeyPress, false);
-  }, [currentRow, data, gameStatus, isColoring]);
+  }, [currentRow, grid, gameStatus, isColoring]);
 
   return (
-    <div className="container" role="grid" aria-label="Wordle game grid">
-      <h1 className="text-7xl mb-20">WORDLE</h1>
-      <div className="flex justify-between items-center w-[24rem] mb-8 h-[3rem]">
-        {isGameOver && (
-          <>
-            <span className="mr-4">
-              {showGameStatusMessage(gameStatus, wordToGuess)}
-            </span>
-            <button
-              onClick={reset}
-              className="bg-white rounded-md text-black p-2"
-            >
-              Reset
-            </button>
-          </>
-        )}
-      </div>
+    <main>
+      <div className="container">
+        <h1 className="text-7xl mb-20">WORDLE</h1>
+        <div className="flex justify-between items-center w-[24rem] mb-8 h-[3rem]">
+          {isGameOver && (
+            <>
+              <span className="mr-4">
+                {getGameStatusMessage(gameStatus, wordToGuess)}
+              </span>
+              <button
+                onClick={reset}
+                className="bg-white rounded-md text-black p-2"
+              >
+                Reset
+              </button>
+            </>
+          )}
+        </div>
 
-      <div className="grid">
-        {data.map((row, rowIndex) =>
-          row.map(({ value, bgClass }, index) => (
-            <Cell
-              key={`${rowIndex}-${index}`}
-              value={value}
-              backgroundClass={bgClass}
-            />
-          ))
-        )}
+        <div
+          className="grid"
+          role="group"
+          aria-label="Wordle game grid"
+          aria-describedby="wordle-instructions"
+        >
+          {grid.map((row, rowIndex) =>
+            row.map(({ value, bgColor }, cellIndex) => (
+              <div key={`cell-${rowIndex}-${cellIndex}`}>
+                <Cell value={value} backgroundClass={bgColor} />
+              </div>
+            ))
+          )}
+        </div>
+
+        <div id="wordle-instructions" className="sr-only">
+          Grid for the Wordle game. Each row represents a guess, and each cell
+          represents a letter.
+        </div>
       </div>
-    </div>
+    </main>
   );
 }

@@ -64,9 +64,7 @@ function LikeButton({
   };
 
   // cleaning up on unmount
-  useEffect(() => {
-    return () => clearDebounce();
-  }, []);
+  useEffect(() => clearDebounce, []);
 
   return (
     <button
