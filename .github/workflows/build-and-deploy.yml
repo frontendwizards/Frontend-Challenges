@@ -66,13 +66,13 @@ jobs:
           # Write summary to GITHUB_STEP_SUMMARY with links
           echo "## Build Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Challenge Name | Link | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "| Challenge Name | Demo | Status |" >> $GITHUB_STEP_SUMMARY
           echo "|----------------|------|--------|" >> $GITHUB_STEP_SUMMARY
 
           base_url="https://frontendproblems.vercel.app"
 
           for problem in "${success_problems[@]}"; do
-            echo "| $problem | [$problem]($base_url/$problem) | ✅ |" >> $GITHUB_STEP_SUMMARY
+            echo "| $problem | Link($base_url/$problem) | ✅ |" >> $GITHUB_STEP_SUMMARY
           done
 
           for problem in "${failed_problems[@]}"; do
