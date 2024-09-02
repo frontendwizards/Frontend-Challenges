@@ -22,26 +22,22 @@ Each challenge includes:
   - [How To Add Your Solution](#how-to-add-your-solution)
   - [Coding Standards](#coding-standards)
 
-## Problems
-
-### User Interface problems
-
 <p align="center">
 
-| Title                                         | Difficulty | Completed | Accessible | Reviewed | Solution Explained |
-| --------------------------------------------- | ---------- | --------- | ---------- | -------- | ------------------ |
-| [Traffic light](/problems/traffic-light/)     | Easy       | ✅        | ✅         | ✅       | -                  |
-| [Whack a Mole](/problems/whack-a-mole/)       | Medium     | ✅        | ✅         | ✅       | -                  |
-| [File Explorer](/problems/file-explorer/)     | Medium     | ✅        | ✅         | ✅       | -                  |
-| [Wordle Game](/problems/wordle-game/)         | Hard       | ✅        | ✅         | ✅       | -                  |
-| [Twitter like](/problems/twitter-like/)       | Medium     | ✅        | ✅         | ✅       | -                  |
-| [Twitter like II](/problems/twitter-like-II/) | Medium     | -         | -          | -        | -                  |
+| Title                                         | Difficulty | Completed | Accessible | Reviewed |
+| --------------------------------------------- | ---------- | --------- | ---------- | -------- |
+| [Traffic light](/problems/traffic-light/)     | Easy       | ✅        | ✅         | ✅       |
+| [Whack a Mole](/problems/whack-a-mole/)       | Medium     | ✅        | ✅         | ✅       |
+| [File Explorer](/problems/file-explorer/)     | Medium     | ✅        | ✅         | ✅       |
+| [Wordle Game](/problems/wordle-game/)         | Hard       | ✅        | ✅         | ✅       |
+| [Twitter like](/problems/twitter-like/)       | Medium     | ✅        | ✅         | ✅       |
+| [Twitter like II](/problems/twitter-like-II/) | Medium     | -         | -          | -        |
 
 </p>
 
 ### Utility functions problems
 
-<p align="center">
+  <p align="center">
 
 | Title | Difficulty | Completed | Tests | Reviewed |
 | ----- | ---------- | --------- | ----- | -------- |
