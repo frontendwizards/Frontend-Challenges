@@ -1,33 +1,25 @@
 import React, { useEffect, useState } from "react";
 import "./styles.css";
+import { cn } from "./utils/cn";
 
-const WORDS = [
+const WORDS = Object.freeze([
   "APPLE",
-  "BEAST",
-  "FAINT",
-  "FEAST",
-  "FRUIT",
-  "GAMES",
-  "PAINT",
-  "PASTE",
-  "TOWER",
-  "REACT",
-];
+])
 
 const WORD_LENGTH = 5;
 const MAX_TRIES = 6;
 
 enum CellColor {
-  Default = "light-gray",
-  Absent = "dark-gray",
-  Correct = "green",
-  Present = "yellow",
+  DEFAULT = "light-gray",
+  ABSENT = "dark-gray",
+  CORRECT = "green",
+  PRESENT = "yellow",
 }
 
 enum GameStatus {
-  Won = "WON",
-  Lost = "LOST",
-  Playing = "PLAYING",
+  WON,
+  LOST,
+  PLAYING
 }
 
 type CellData = {
@@ -41,7 +33,7 @@ const generateInitialGridState = (): Grid =>
   Array.from({ length: MAX_TRIES }, () =>
     Array.from({ length: WORD_LENGTH }, () => ({
       value: null,
-      bgColor: CellColor.Default,
+      bgColor: CellColor.DEFAULT,
     }))
   );
 
@@ -202,20 +194,21 @@ export default function App() {
     <main>
       <div className="container">
         <h1 className="text-7xl mb-10">WORDLE</h1>
-        <div className="flex justify-between items-center w-[24rem] mb-8 h-[3rem]">
-          {isGameOver && (
-            <>
-              <span className="mr-4">
-                {getGameStatusMessage(gameStatus, wordToGuess)}
-              </span>
-              <button
-                onClick={reset}
-                className="bg-white rounded-md text-black p-2"
-              >
-                Reset
-              </button>
-            </>
-          )}
+        <div
+          className={cn([
+            "flex justify-between items-center w-[24rem] mb-8 h-[3rem]",
+            !isGameOver && "invisible",
+          ])}
+        >
+          <span className="mr-4">
+            {getGameStatusMessage(gameStatus, wordToGuess)}
+          </span>
+          <button
+            onClick={reset}
+            className="bg-white rounded-md text-black p-2"
+          >
+            Reset
+          </button>
         </div>
 
         <div
@@ -226,9 +219,11 @@ export default function App() {
         >
           {grid.map((row, rowIndex) =>
             row.map(({ value, bgColor }, cellIndex) => (
-              <div key={`cell-${rowIndex}-${cellIndex}`}>
-                <Cell value={value} backgroundClass={bgColor} />
-              </div>
+              <Cell
+                key={`cell-${rowIndex}-${cellIndex}`}
+                value={value}
+                backgroundClass={bgColor}
+              />
             ))
           )}
         </div>

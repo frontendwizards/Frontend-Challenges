@@ -63,9 +63,6 @@ function LikeButton({
     debouncedLikeSave(newIsLiked);
   };
 
-  // cleaning up on unmount
-  useEffect(() => clearDebounce, []);
-
   return (
     <button
       onClick={toggleLike}

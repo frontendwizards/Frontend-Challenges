@@ -72,7 +72,7 @@ source scripts/create_project.sh $PROJECT_NAME $PROJECT_PATH
 
 - Test your app with a keyboard to ensure full keyboard navigation
 - Add ARIA labels to make your app understandable by screen readers
-- Use [Claude](https://www.anthropic.com/index/claude) for a final accessibility check
+- Use [Claude](https://claude.ai/new) for a final accessibility check
 
 You can use automated accessibility checkers like **axe-core** to detect most accessibility issues.
 
@@ -86,6 +86,7 @@ For more information, check out [this article](https://larsmagnus.co/blog/how-to
 - ⭐️ Star this repository to motivate the addition of more challenges
 - 🤓 Solved an interesting problem? Feel free to submit it!
 - 🐞 If you find a bug, raise an issue or fix it and send a pull request.
+- 📚 Improve documentation or add tutorials for solving challenges.
 
 ## How To Add Your Solution
 
