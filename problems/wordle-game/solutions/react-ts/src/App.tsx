@@ -15,39 +15,39 @@ const WORDS = [
 ];
 
 const WORD_LENGTH = 5;
-const TRIES = 6;
+const MAX_TRIES = 6;
 
-enum CELL_COLOR {
-  DEFAULT = "light-gray",
-  ABSENT = "dark-gray",
-  CORRECT = "green",
-  PRESENT = "yellow",
+enum CellColor {
+  Default = "light-gray",
+  Absent = "dark-gray",
+  Correct = "green",
+  Present = "yellow",
 }
 
-enum GAME_STATUS {
-  WON = "WON",
-  LOST = "LOST",
-  PLAYING = "PLAYING",
+enum GameStatus {
+  Won = "WON",
+  Lost = "LOST",
+  Playing = "PLAYING",
 }
 
 type CellData = {
   value: string | null;
-  bgColor: CELL_COLOR;
+  bgColor: CellColor;
 };
 
 type Grid = CellData[][];
 
 const generateInitialGridState = (): Grid =>
-  Array.from({ length: TRIES }, () =>
+  Array.from({ length: MAX_TRIES }, () =>
     Array.from({ length: WORD_LENGTH }, () => ({
       value: null,
-      bgColor: CELL_COLOR.DEFAULT,
+      bgColor: CellColor.Default,
     }))
   );
 
 interface CellProps {
   value: string | null;
-  backgroundClass: CELL_COLOR;
+  backgroundClass: CellColor;
 }
 
 const Cell: React.FC<CellProps> = ({ value, backgroundClass }) => {
@@ -56,7 +56,7 @@ const Cell: React.FC<CellProps> = ({ value, backgroundClass }) => {
       className={[
         "cell",
         backgroundClass,
-        backgroundClass !== CELL_COLOR.DEFAULT && "cell-animating",
+        backgroundClass !== CellColor.DEFAULT && "cell-animating",
         value !== null && "cell-filled",
       ].join(" ")}
     >
@@ -71,13 +71,13 @@ const getWordFromRow = (row: CellData[]): string =>
 const getRandomWord = () => WORDS[Math.floor(Math.random() * WORDS.length)];
 
 const getGameStatusMessage = (
-  currentGameStatus: GAME_STATUS,
+  currentGameStatus: GameStatus,
   currentWord: string
 ) => {
-  const gameStatusMessage: Record<GAME_STATUS, string> = {
-    [GAME_STATUS.WON]: "Congratulations! You won 🎉",
-    [GAME_STATUS.LOST]: `The word was ${currentWord}.`,
-    [GAME_STATUS.PLAYING]: "",
+  const gameStatusMessage: Record<GameStatus, string> = {
+    [GameStatus.WON]: "Congratulations! You won 🎉",
+    [GameStatus.LOST]: `The word was ${currentWord}.`,
+    [GameStatus.PLAYING]: "",
   };
 
   return gameStatusMessage[currentGameStatus];
@@ -86,15 +86,13 @@ const getGameStatusMessage = (
 export default function App() {
   const [currentRow, setCurrentRow] = useState(0);
   const [grid, setData] = useState<Grid>(generateInitialGridState());
-  const [gameStatus, setGameStatus] = useState<GAME_STATUS>(
-    GAME_STATUS.PLAYING
-  );
+  const [gameStatus, setGameStatus] = useState<GameStatus>(GameStatus.PLAYING);
   const [isColoring, setIsColoring] = useState(false);
   const [wordToGuess, setWordToGuess] = useState(getRandomWord());
 
-  const isGameOver = gameStatus !== GAME_STATUS.PLAYING;
+  const isGameOver = gameStatus !== GameStatus.PLAYING;
 
-  const updateRowColors = (bgColorsList: CELL_COLOR[]): Promise<void> => {
+  const updateRowColors = (bgColorsList: CellColor[]): Promise<void> => {
     return new Promise((resolve) => {
       let index = 0;
       const interval = setInterval(() => {
@@ -114,16 +112,16 @@ export default function App() {
 
   const submitCurrentWord = async (currentWord: string): Promise<boolean> => {
     setIsColoring(true);
-    let bgColorsList: CELL_COLOR[] = [];
+    let bgColorsList: CellColor[] = [];
     let isMatching = currentWord === wordToGuess;
 
     if (isMatching) {
-      bgColorsList = Array(wordToGuess.length).fill(CELL_COLOR.CORRECT);
+      bgColorsList = Array(wordToGuess.length).fill(CellColor.CORRECT);
     } else {
       bgColorsList = currentWord.split("").map((character, index) => {
-        if (wordToGuess[index] === character) return CELL_COLOR.CORRECT;
-        if (wordToGuess.includes(character)) return CELL_COLOR.PRESENT;
-        return CELL_COLOR.ABSENT;
+        if (wordToGuess[index] === character) return CellColor.CORRECT;
+        if (wordToGuess.includes(character)) return CellColor.PRESENT;
+        return CellColor.ABSENT;
       });
     }
 
@@ -133,7 +131,7 @@ export default function App() {
   };
 
   const endGame = (isWon = true) => {
-    setGameStatus(isWon ? GAME_STATUS.WON : GAME_STATUS.LOST);
+    setGameStatus(isWon ? GameStatus.WON : GameStatus.LOST);
   };
 
   const removeLastCharacter = () => {
@@ -166,7 +164,7 @@ export default function App() {
 
     if (isMatching) {
       endGame(true);
-    } else if (currentRow === TRIES - 1) {
+    } else if (currentRow === MAX_TRIES - 1) {
       endGame(false);
     } else {
       setCurrentRow((prevRow) => prevRow + 1);
@@ -176,7 +174,7 @@ export default function App() {
   const reset = () => {
     setCurrentRow(0);
     setData(generateInitialGridState());
-    setGameStatus(GAME_STATUS.PLAYING);
+    setGameStatus(GameStatus.PLAYING);
     setIsColoring(false);
     setWordToGuess(getRandomWord());
   };
