@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./styles.css";
 import { cn } from "./utils/cn";
 
-const WORDS = Object.freeze([
-  "APPLE",
-])
+const WORDS = Object.freeze(["APPLE"]);
 
 const WORD_LENGTH = 5;
 const MAX_TRIES = 6;
@@ -19,7 +17,7 @@ enum CellColor {
 enum GameStatus {
   WON,
   LOST,
-  PLAYING
+  PLAYING,
 }
 
 type CellData = {

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import saveLikeValue from "./services/saveLikeValue";
 import "./styles.css";
 import debounce from "./utils/debounce";

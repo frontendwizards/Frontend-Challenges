@@ -70,13 +70,15 @@ source scripts/create_project.sh $PROJECT_NAME $PROJECT_PATH
 
 ## How to Check if Your Solution (UI) Is Accessible
 
-- Test your app with a keyboard to ensure full keyboard navigation
-- Add ARIA labels to make your app understandable by screen readers
-- Use [Claude](https://claude.ai/new) for a final accessibility check
-
 You can use automated accessibility checkers like **axe-core** to detect most accessibility issues.
 
 For more information, check out [this article](https://larsmagnus.co/blog/how-to-test-for-accessibility-with-axe-core-in-next-js-and-react).
+
+Also :
+
+- Test your app with a keyboard to ensure full keyboard navigation
+- Add ARIA labels to make your app understandable by screen readers
+- Use [Claude](https://claude.ai/new) for a final accessibility check
 
 > [!NOTE]  
 > axe-core is already included in the starter template.
