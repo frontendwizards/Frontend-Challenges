@@ -41,7 +41,6 @@ code {
   align-items: center;
   color: white;
   font-family: extrabold;
-  transition: all 50ms ease-in;
 }
 
 .cell-animating {

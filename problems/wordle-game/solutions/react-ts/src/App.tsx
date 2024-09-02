@@ -121,7 +121,7 @@ export default function App() {
           clearInterval(interval);
           resolve();
         }
-      }, 300);
+      }, 100);
     });
   };
 
