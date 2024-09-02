@@ -22,6 +22,10 @@ Each challenge includes:
   - [How To Add Your Solution](#how-to-add-your-solution)
   - [Coding Standards](#coding-standards)
 
+## Problems
+
+### User Interface problems
+
 <p align="center">
 
 | Title                                         | Difficulty | Completed | Accessible | Reviewed |
