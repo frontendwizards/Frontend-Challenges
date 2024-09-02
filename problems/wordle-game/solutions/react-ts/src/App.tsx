@@ -203,7 +203,7 @@ export default function App() {
   return (
     <main>
       <div className="container">
-        <h1 className="text-7xl mb-20">WORDLE</h1>
+        <h1 className="text-7xl mb-10">WORDLE</h1>
         <div className="flex justify-between items-center w-[24rem] mb-8 h-[3rem]">
           {isGameOver && (
             <>
