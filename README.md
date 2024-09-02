@@ -102,6 +102,5 @@ In short:
 
 Please adhere to the following coding standards when submitting solutions:
 
-- Use TypeScript for type safety
-- Follow the [React Hooks guidelines](https://reactjs.org/docs/hooks-rules.html)
-- Ensure your code is formatted using Prettier
+- Ensure your app is accessible. Refer to the [Accessibility Guidelines](#how-to-check-if-your-solution-ui-is-accessible) for more details.
+- Format your code using Prettier.
