@@ -15,11 +15,6 @@ The basic Twitter like button can be visually dull without animation. Building o
 - Maintain all functionality from the original Twitter Like component
 - Ensure the component is reusable and customizable
 
-## Implementation Details
-
-- Use React hooks for state management
-- Implement smooth CSS transitions for the like animation
-
 ## Example Usage
 
 Here's an example of how to use the `LikeButton` component:
