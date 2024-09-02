@@ -24,13 +24,9 @@ const [isLiked, setIsLiked] = useState(false);
 
 <LikeButton isLiked={isLiked} setIsLiked={setIsLiked} />;
 ```
+## Props
 
-The LikeButton component should:
+The `LikeButton` component accepts the following props:
 
-- Toggle between "liked" and "unliked" states on click.
-- Show a visual indication of the current state.
-- Debounce requests to prevent excessive server calls.
-
-## Live Demo
-
-[Check out the live demo here](#)
+- `isLiked` (boolean): The current like state
+- `setIsLiked` (function): A function to update the like state
