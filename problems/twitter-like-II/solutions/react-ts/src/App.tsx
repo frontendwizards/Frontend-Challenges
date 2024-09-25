@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import saveLikeValue from "./services/saveLikeValue";
 import "./styles.css";
+import { cn } from "./utils/cn";
 import debounce from "./utils/debounce";
 
 function LikeButtonSVG({
@@ -12,9 +13,18 @@ function LikeButtonSVG({
   height: number;
   isLiked: boolean;
 }) {
+  const [isClicked, setIsClicked] = useState(false);
+
   return (
-    <div className="heart w-10 h-10">
-      
+    <div className="overflow-hidden rounded-full p-2">
+      <div
+        onClick={() => setIsClicked(true)}
+        className={cn([
+          "heart w-10 h-10 border-2",
+          isClicked && isLiked && "is_animating",
+          isLiked && "heart-filled",
+        ])}
+      />
     </div>
   );
 }
@@ -70,14 +80,14 @@ export default function App() {
   );
   const postLikes = 32;
 
-  const totalPostLikes = postLikes + (isLiked ? 1 : 0);
+  const totalPostLikes = postLikes + Number(isLiked);
 
   return (
-    <main className="bg-gray-400 h-screen flex items-center justify-center">
-     <div className="flex justify-center items-center gap-3">
-     <span className="text-4xl">{totalPostLikes}</span>
-      <LikeButton isLiked={isLiked} setIsLiked={setIsLiked} />
-     </div>
+    <main className=" h-screen flex items-center justify-center">
+      <div className="flex justify-center items-center">
+        <span className="text-2xl">{totalPostLikes}</span>
+        <LikeButton isLiked={isLiked} setIsLiked={setIsLiked} />
+      </div>
     </main>
   );
 }

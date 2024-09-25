@@ -11,4 +11,24 @@ body {
 .heart {
   background-image:url( 'https://abs.twimg.com/a/1446542199/img/t1/web_heart_animation.png');
   background-position: left;
+  background-size: 2900%;
+  background-repeat: no-repeat;
+  scale: 2;
+}
+
+.heart:hover {
+  /* background-position: right; */
+}
+
+.heart-filled {
+  background-position: right;
+}
+
+.is_animating {
+  animation: heart-burst .8s steps(28) 1;
+}
+
+@keyframes heart-burst {
+  from {background-position:left;}
+  to { background-position:right;}
 }

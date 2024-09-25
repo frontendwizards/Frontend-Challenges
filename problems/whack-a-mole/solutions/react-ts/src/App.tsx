@@ -109,6 +109,7 @@ const App: FC = () => {
               className="relative h-[12rem] flex-[0_1_25%] overflow-hidden"
             >
               <button
+                tabIndex={-1}
                 aria-label={`Mole ${index + 1}`}
                 onClick={() => catchHole(index)}
                 className={cn([
@@ -125,7 +126,7 @@ const App: FC = () => {
               </button>
               <img
                 alt="mole hill"
-                className="absolute bottom-[-1.69rem] "
+                className="absolute bottom-[-1.69rem]"
                 src="https://www.greatfrontend.com/img/questions/whack-a-mole/mole-hill.png"
               />
             </div>
