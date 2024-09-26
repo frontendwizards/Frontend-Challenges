@@ -74,16 +74,17 @@ function LikeButton({
   );
 }
 
+const postLikes = 32;
+
 export default function App() {
   const [isLiked, setIsLiked] = useState(
     localStorage.getItem("liked") === "true"
   );
-  const postLikes = 32;
 
   const totalPostLikes = postLikes + Number(isLiked);
 
   return (
-    <main className=" h-screen flex items-center justify-center">
+    <main className=" h-screen flex items-center justify-center bg-[#9DA3AF]">
       <div className="flex justify-center items-center">
         <span className="text-2xl">{totalPostLikes}</span>
         <LikeButton isLiked={isLiked} setIsLiked={setIsLiked} />

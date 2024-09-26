@@ -34,5 +34,3 @@ cd "$FULL_PATH/solutions/react-ts"
 npm install
 
 echo "Project '$PROJECT_NAME' created successfully at '$FULL_PATH'."
-
-# try source
