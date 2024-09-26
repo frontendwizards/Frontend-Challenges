@@ -3,8 +3,7 @@
 const { program } = require("commander");
 const { startChallenge } = require("./start-challenge");
 const { createChallenge } = require("./create-challenge");
-const { execSync } = require("child_process");
-const path = require("path");
+// const { listChallenges } = require("./list-challenges");
 
 program
   .version("1.0.0")
@@ -16,7 +15,9 @@ program
   .action((challengeName, challengePath) => {
     console.log(`Creating new challenge: ${challengeName}`);
     const solutionPath = createChallenge(challengeName, challengePath);
-    changeDirectory(solutionPath);
+    console.log(
+      `To begin working on the challenge\n run: cd "${solutionPath}"`
+    );
   });
 
 program
@@ -25,7 +26,9 @@ program
   .action((challengeName, solutionName) => {
     console.log(`Starting challenge: ${challengeName}`);
     const solutionPath = startChallenge(challengeName, solutionName);
-    changeDirectory(solutionPath);
+    console.log(
+      `To begin working on the challenge\n run: cd "${solutionPath}"`
+    );
   });
 
 program
@@ -35,21 +38,5 @@ program
     console.log("Available challenges:");
     // listChallenges();
   });
-
-function changeDirectory(dirPath) {
-  // Ensure we're working with an absolute path
-  const absolutePath = dirPath
-
-  // Create the directory and any necessary parent directories
-  // fs.mkdirSync(absolutePath, { recursive: true });
-  console.log(`abs directory to: ${absolutePath}`);
-
-  try {
-    process.chdir(absolutePath);
-    console.log(`Changed directory to: ${process.cwd()}`);
-  } catch (err) {
-    console.error(`Error changing directory: ${err}`);
-  }
-}
 
 program.parse(process.argv);
