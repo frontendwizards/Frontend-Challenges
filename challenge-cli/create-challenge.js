@@ -35,7 +35,7 @@ function replaceInFiles(directory, oldValue, newValue, filePattern) {
   });
 }
 
-function createProject(projectName, projectPath = "problems") {
+function createChallenge(projectName, projectPath = "problems") {
   const challengeName = capitalizeProjectName(projectName);
   const fullPath = createFullPath(projectPath, projectName);
 
@@ -49,11 +49,13 @@ function createProject(projectName, projectPath = "problems") {
   replaceInFiles(fullPath, "Example Challenge", challengeName, "README.md");
 
   process.chdir(`${fullPath}/solutions/react-ts`);
-  execSync("npm install");
+  execSync("npm install --loglevel=silent --logs-max=0");
 
   console.log(
     `Project '${projectName}' created successfully at '${fullPath}'.`
   );
+
+  return `${fullPath}/solutions/react-ts`;
 }
 
-module.exports = { createProject };
+module.exports = { createChallenge };

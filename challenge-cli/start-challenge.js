@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const { execSync } = require("child_process");
 
-function setupProblem(problemName, projectName) {
+function startChallenge(problemName, projectName) {
   if (!problemName) {
     console.error("Error: $PROBLEM_NAME is not provided");
     process.exit(1);
@@ -54,7 +54,7 @@ function setupProblem(problemName, projectName) {
 
   // Run npm install
   try {
-    execSync("npm install", { stdio: "inherit" });
+    execSync("npm install --loglevel=silent --logs-max=0", { stdio: "inherit" });
   } catch (error) {
     console.error("Error running npm install:", error.message);
   }
@@ -62,4 +62,4 @@ function setupProblem(problemName, projectName) {
   return solutionPath;
 }
 
-module.exports = { setupProblem };
+module.exports = { startChallenge };

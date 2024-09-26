@@ -20,6 +20,7 @@ Each challenge includes:
   - [How to Check if Your Solution (UI) Is Accessible](#how-to-check-if-your-solution-ui-is-accessible)
   - [How can you help?](#how-can-you-help)
   - [How To Add Your Solution](#how-to-add-your-solution)
+  - [How To Add New Problem](#how-to-add-new-problem)
   - [Coding Standards](#coding-standards)
 
 ## Problems
@@ -55,17 +56,19 @@ Each challenge includes:
 
 If you wanna work with React, you can use the starter template.
 
-you can create a new project by using the create_project script:
+Just run this command:
 
 ```bash
 
+syntax: challenge-cli start $PROBLEM_NAME $PROJECT_NAME
+# $PROJECT_PATH default value is your github username or 'my-solution'
+
 # Example 1
-source scripts/create_project.sh $PROJECT_NAME
+challenge-cli start twitter-like
 
 # Example 2
-source scripts/create_project.sh $PROJECT_NAME $PROJECT_PATH
+challenge-cli start twitter-like my-solution
 
-# $PROJECT_PATH default value is 'problems'
 ```
 
 ## How to Check if Your Solution (UI) Is Accessible
@@ -100,6 +103,26 @@ In short:
 - Create a branch and make your change.
 - Push your branch to your fork.
 - Open a PR against this repo.
+
+
+## How To Add New Problem
+
+If you wanna work with React, you can use the starter template.
+
+if you can create a new problem, use the create command:
+
+```bash
+
+syntax: challenge-cli create $PROBLEM_NAME $PROJECT_NAME
+# $PROJECT_PATH default value is 'problems'
+
+# Example 1
+challenge-cli create new-problem
+
+# Example 2
+challenge-cli create new-problem problems-folder
+
+```
 
 ## Coding Standards
 

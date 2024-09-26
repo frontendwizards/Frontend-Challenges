@@ -1,38 +1,55 @@
 #!/usr/bin/env node
 
 const { program } = require("commander");
-const { setupProblem } = require("./setup-problem");
-const { createProblem } = require("./create-problem");
+const { startChallenge } = require("./start-challenge");
+const { createChallenge } = require("./create-challenge");
+const { execSync } = require("child_process");
+const path = require("path");
 
 program
   .version("1.0.0")
   .description("CLI for managing coding challenges and solutions");
 
 program
-  .command("create <projectName> [projectPath]")
-  .description("Create a new problem")
-  .action((projectName, projectPath) => {
-    console.log(`Creating new problem: ${projectName}`);
-    createProblem(projectName, projectPath);
+  .command("create <challengeName> [challengePath]")
+  .description("Create a new challenge")
+  .action((challengeName, challengePath) => {
+    console.log(`Creating new challenge: ${challengeName}`);
+    const solutionPath = createChallenge(challengeName, challengePath);
+    changeDirectory(solutionPath);
   });
 
 program
-  .command("setup <challenge> [projectName]")
-  .description("Create a new solution for a challenge")
-  .action((challenge, projectName) => {
-    console.log(`Creating new solution for challenge: ${challenge}`);
-    // Add logic to create a new solution
-    const solutionPath = setupProblem(challenge, projectName);
-    console.log(`Solution created at: ${solutionPath}`);
-    console.log(`To navigate to the solution, run: cd "${solutionPath}"`);
+  .command("start <challengeName> [solutionName]")
+  .description("Start working on a challenge")
+  .action((challengeName, solutionName) => {
+    console.log(`Starting challenge: ${challengeName}`);
+    const solutionPath = startChallenge(challengeName, solutionName);
+    changeDirectory(solutionPath);
   });
 
 program
-  .command("list-challenges")
+  .command("list")
   .description("List all available challenges")
   .action(() => {
     console.log("Available challenges:");
-    // Add logic to list challenges
+    // listChallenges();
   });
+
+function changeDirectory(dirPath) {
+  // Ensure we're working with an absolute path
+  const absolutePath = dirPath
+
+  // Create the directory and any necessary parent directories
+  // fs.mkdirSync(absolutePath, { recursive: true });
+  console.log(`abs directory to: ${absolutePath}`);
+
+  try {
+    process.chdir(absolutePath);
+    console.log(`Changed directory to: ${process.cwd()}`);
+  } catch (err) {
+    console.error(`Error changing directory: ${err}`);
+  }
+}
 
 program.parse(process.argv);
