@@ -14,6 +14,8 @@ The basic Twitter like button can be visually dull without animation. Building o
 - Handle spam clicking (rapid like/unlike actions) without breaking functionality
 - Maintain all functionality from the original Twitter Like component
 - Ensure the component is reusable and customizable
+- [TODO] ensure its takes only the given width/height
+- [TODO] Don't mutate the total count of likes, use a derived state for total counts
 
 ## Example Usage
 

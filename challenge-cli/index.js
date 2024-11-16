@@ -18,7 +18,7 @@ program
     console.log(
       `To begin working on the challenge\n run: cd "${solutionPath}"`
     );
-  });
+  }); b 
 
 program
   .command("start <challengeName> [solutionName]")

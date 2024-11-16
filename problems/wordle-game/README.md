@@ -4,8 +4,6 @@
 
 Build a clone of the popular word game **Wordle**, where players have six attempts to guess a five-letter word. Feedback is given for each guess in the form of colored tiles indicating when letters match or occupy the correct position.
 
-<img src="solutions/react-ts/public/images/demo.png"/>
-
 ## Requirements
 
 - A random five-letter word is chosen every time the app launches.
@@ -23,7 +21,3 @@ Build a clone of the popular word game **Wordle**, where players have six attemp
 - **Correct (Green)**: `#6aaa64`
 - **Present (Yellow)**: `#c9b458`
 - **Absent (Dark Gray)**: `#787c7e`
-
-## Live Demo
-
-[Check out the live demo here](#)

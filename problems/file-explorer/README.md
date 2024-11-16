@@ -4,8 +4,6 @@
 
 Create a file tree component that displays a hierarchical file structure. The component should allow users to expand and collapse folders to navigate through the file system. Files and folders should be displayed in a structured manner, with folders being expandable to show their contents.
 
-![File Tree Demo](solutions/react-ts/public/images/demo.png)
-
 ## Requirements
 
 - The file tree should display a hierarchical structure of files and folders.
@@ -62,7 +60,3 @@ const fileTreeData = [
   },
 ];
 ```
-
-## Live Demo
-
-[Check out the live demo here](#)
