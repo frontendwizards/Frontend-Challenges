@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles.css";
 import { cn } from "./utils/cn";
 
@@ -13,7 +13,7 @@ const WORDS = Object.freeze([
   "PASTE",
   "TOWER",
   "REACT",
-])
+]);
 
 const WORD_LENGTH = 5;
 const MAX_TRIES = 6;
@@ -28,7 +28,7 @@ enum CellColor {
 enum GameStatus {
   WON,
   LOST,
-  PLAYING
+  PLAYING,
 }
 
 type CellData = {
@@ -51,15 +51,16 @@ interface CellProps {
   backgroundClass: CellColor;
 }
 
-const Cell: React.FC<CellProps> = ({ value, backgroundClass }) => {
+const Cell = ({ value, backgroundClass }: CellProps) => {
   return (
     <div
-      className={[
-        "cell",
-        backgroundClass,
+      className={cn(
+        "aspect-square w-full border-2 border-[#3a3a3d] text-white text-2xl md:text-4xl font-extrabold",
+        "flex items-center justify-center uppercase",
         backgroundClass !== CellColor.DEFAULT && "cell-animating",
         value !== null && "cell-filled",
-      ].join(" ")}
+        backgroundClass
+      )}
     >
       {value}
     </div>
@@ -114,7 +115,7 @@ export default function App() {
   const submitCurrentWord = async (currentWord: string): Promise<boolean> => {
     setIsColoring(true);
     let bgColorsList: CellColor[] = [];
-    let isMatching = currentWord === wordToGuess;
+    const isMatching = currentWord === wordToGuess;
 
     if (isMatching) {
       bgColorsList = Array(wordToGuess.length).fill(CellColor.CORRECT);
@@ -200,28 +201,28 @@ export default function App() {
   }, [currentRow, grid, gameStatus, isColoring]);
 
   return (
-    <main>
-      <div className="container">
-        <h1 className="text-7xl mb-10">WORDLE</h1>
+    <main className="min-h-screen">
+      <div className="px-4 py-12 md:py-24 max-w-2xl mx-auto flex flex-col items-center">
+        <h1 className="text-5xl md:text-7xl mb-6 md:mb-10">WORDLE</h1>
         <div
-          className={cn([
-            "flex justify-between items-center w-[24rem] mb-8 h-[3rem]",
-            !isGameOver && "invisible",
-          ])}
+          className={cn(
+            "flex justify-between items-center w-full max-w-sm mb-6 md:mb-8 h-12",
+            !isGameOver && "invisible"
+          )}
         >
           <span className="mr-4">
             {getGameStatusMessage(gameStatus, wordToGuess)}
           </span>
           <button
             onClick={reset}
-            className="bg-white rounded-md text-black p-2"
+            className="bg-white rounded-md text-black px-4 py-2"
           >
             Reset
           </button>
         </div>
 
         <div
-          className="grid"
+          className="grid gap-2 md:gap-4 grid-cols-5 w-full max-w-sm"
           role="group"
           aria-label="Wordle game grid"
           aria-describedby="wordle-instructions"
