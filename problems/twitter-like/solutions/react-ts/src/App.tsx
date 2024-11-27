@@ -80,7 +80,7 @@ export default function App() {
   );
 
   return (
-    <main className="bg-gray-400 h-screen flex items-center justify-center">
+    <main className="flex items-center justify-center bg-gray-400 h-full">
       <LikeButton isLiked={isLiked} setIsLiked={setIsLiked} />
     </main>
   );

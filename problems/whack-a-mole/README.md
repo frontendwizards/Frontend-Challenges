@@ -4,8 +4,6 @@
 
 Create a Whack-a-Mole game where players must click on moles as they randomly appear from holes. The game tests reflexes and timing as players try to achieve the highest score possible within a time limit.
 
-![Whack a Mole Demo](solutions/react-ts/public/images/demo.png)
-
 ## Requirements
 
 - The game should have a grid of 9 holes.
@@ -16,7 +14,3 @@ Create a Whack-a-Mole game where players must click on moles as they randomly ap
 - The player has 20 seconds to hit as many moles as possible.
 - The game ends when the timer runs out. The final score is displayed and the player has the option to play again.
 - The game should have a start button and display the current score and time remaining.
-
-## Live Demo
-
-[Check out the live demo here](#)

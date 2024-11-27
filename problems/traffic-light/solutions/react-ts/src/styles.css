@@ -4,12 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: "Poppins";
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
 }
 
 body {
-  font-family: sans-serif;
+  font-family: "Poppins";
 }
 
 .traffic-light-container {

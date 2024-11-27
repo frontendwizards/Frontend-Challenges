@@ -84,7 +84,7 @@ export default function App() {
   const totalPostLikes = postLikes + Number(isLiked);
 
   return (
-    <main className=" h-screen flex items-center justify-center bg-[#9DA3AF]">
+    <main className="flex items-center justify-center bg-[#9DA3AF] h-full">
       <div className="flex justify-center items-center">
         <span className="text-2xl">{totalPostLikes}</span>
         <LikeButton isLiked={isLiked} setIsLiked={setIsLiked} />

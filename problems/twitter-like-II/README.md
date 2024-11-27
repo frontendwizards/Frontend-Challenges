@@ -2,8 +2,6 @@
 
 ## Problem Description
 
-![Demo](solutions/react-ts/public/images/demo.png)
-
 The basic Twitter like button can be visually dull without animation. Building on the first Twitter like challenge, your task is to add animation to the button. Additionally, implement a like counter that starts at 32.
 
 ## Requirements

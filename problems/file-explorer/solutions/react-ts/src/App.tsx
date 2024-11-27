@@ -111,7 +111,7 @@ function FileTree({ treeData }: { treeData: Readonly<FileTreeNode[]> }) {
 
 export default function App() {
   return (
-    <main className="bg-gray-800 h-screen w-full text-white text-2xl p-12">
+    <main className="!bg-gray-800 w-full text-white text-2xl p-12 h-full">
       <FileTree treeData={fileTreeData} />
     </main>
   );
