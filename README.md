@@ -44,8 +44,31 @@ Each challenge includes:
 
   <p align="center">
 
-| Title | Difficulty | Completed | Tests | Reviewed |
-| ----- | ---------- | --------- | ----- | -------- |
+| Title                                                                                                                               | Difficulty | Topic                       |
+| ----------------------------------------------------------------------------------------------------------------------------------- | ---------- | --------------------------- |
+| [To Be Or Not To Be](https://leetcode.com/problems/to-be-or-not-to-be/description/)                                                 | Easy       | Closures                    |
+| [Array Reduce Transformation](https://leetcode.com/problems/array-reduce-transformation/description/)                               | Easy       | Basic Array Transformations |
+| [Function Composition](https://leetcode.com/problems/function-composition/description/)                                             | Easy       | Function Transformations    |
+| [Return Length of Arguments Passed](https://leetcode.com/problems/return-length-of-arguments-passed/description/)                   | Easy       | Function Transformations    |
+| [Allow One Function Call](https://leetcode.com/problems/allow-one-function-call/description/)                                       | Easy       | Function Transformations    |
+| [Memoize](https://leetcode.com/problems/memoize/description/)                                                                       | Medium     | Function Transformations    |
+| [Calculator with Method Chaining](https://leetcode.com/problems/calculator-with-method-chaining/description/)                       | Easy       | Classes                     |
+| [Add Two Promises](https://leetcode.com/problems/add-two-promises/description/)                                                     | Easy       | Promises and Time           |
+| [Sleep](https://leetcode.com/problems/sleep/description/)                                                                           | Easy       | Promises and Time           |
+| [Timeout Cancellation](https://leetcode.com/problems/timeout-cancellation/description/)                                             | Easy       | Promises and Time           |
+| [Interval Cancellation](https://leetcode.com/problems/interval-cancellation/description/)                                           | Easy       | Promises and Time           |
+| [Promise Time Limit](https://leetcode.com/problems/promise-time-limit/description/)                                                 | Medium     | Promises and Time           |
+| [Cache With Time Limit](https://leetcode.com/problems/cache-with-time-limit/description/)                                           | Medium     | Promises and Time           |
+| [Debounce](https://leetcode.com/problems/debounce/description/)                                                                     | Medium     | Promises and Time           |
+| [Execute Asynchronous Functions in Parallel](https://leetcode.com/problems/execute-asynchronous-functions-in-parallel/description/) | Medium     | Promises and Time           |
+| [Is Object Empty](https://leetcode.com/problems/is-object-empty/description/)                                                       | Easy       | JSON                        |
+| [Chunk Array](https://leetcode.com/problems/chunk-array/description/)                                                               | Easy       | JSON                        |
+| [Array Prototype Last](https://leetcode.com/problems/array-prototype-last/description/)                                             | Easy       | JSON                        |
+| [Group By](https://leetcode.com/problems/group-by/description/)                                                                     | Medium     | JSON                        |
+| [Sort By](https://leetcode.com/problems/sort-by/description/)                                                                       | Easy       | JSON                        |
+| [Join Two Arrays by ID](https://leetcode.com/problems/join-two-arrays-by-id/description/)                                           | Medium     | JSON                        |
+| [Flatten Deeply Nested Array](https://leetcode.com/problems/flatten-deeply-nested-array/description/)                               | Medium     | JSON                        |
+| [Compact Object](https://leetcode.com/problems/compact-object/description/)                                                         | Medium     | JSON                        |
 
 ## Use Cases
 
@@ -103,7 +126,6 @@ In short:
 - Create a branch and make your change.
 - Push your branch to your fork.
 - Open a PR against this repo.
-
 
 ## How To Add New Problem
 
