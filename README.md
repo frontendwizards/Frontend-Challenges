@@ -1,4 +1,4 @@
-# Frontend Challenges (WORK IN PROGRESS)
+# Frontend Challenges
 
 This repo contains frontend challenges to help developers improve problem-solving skills and create performant and accessible UIs.
 
