@@ -44,7 +44,7 @@ Each challenge includes:
 
   <p align="center">
 
-| Title                                                                                                                               | Difficulty | Topic                       | 
+| Title                                                                                                                               | Difficulty | Topic                       |  
 | ----------------------------------------------------------------------------------------------------------------------------------- | ---------- | --------------------------- |
 | [To Be Or Not To Be](https://leetcode.com/problems/to-be-or-not-to-be/description/)                                                 | Easy       | Closures                    |
 | [Array Reduce Transformation](https://leetcode.com/problems/array-reduce-transformation/description/)                               | Easy       | Basic Array Transformations |
