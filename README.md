@@ -84,7 +84,6 @@ If you wanna work with React, you can use the starter template.
 Just run this command:
 
 ```bash
-
 syntax: challenge-cli start $PROBLEM_NAME $PROJECT_NAME
 # $PROJECT_PATH default value is your github username or 'my-solution'
 
@@ -135,7 +134,6 @@ If you wanna work with React, you can use the starter template.
 if you can create a new problem, use the create command:
 
 ```bash
-
 syntax: challenge-cli create $PROBLEM_NAME $PROJECT_NAME
 # $PROJECT_PATH default value is 'problems'
 
@@ -144,7 +142,6 @@ challenge-cli create new-problem
 
 # Example 2
 challenge-cli create new-problem problems-folder
-
 ```
 
 ## Coding Standards
