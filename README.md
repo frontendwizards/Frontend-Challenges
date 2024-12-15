@@ -29,14 +29,14 @@ Each challenge includes:
 
 <p align="center">
 
-| Title | Difficulty | Completed | Accessible | Reviewed | Live Link | Solution Link |
-| --- | --- | --- | --- | --- | --- | --- |
-| [Traffic light](/problems/traffic-light/) | Easy | ✅ | ✅ | ✅ | [Live Demo](https://frontendpractice.hmellahi.me/challenge/user-interface/traffic-light){:target="_blank"} | [Solution](../frontend-challenges/problems/traffic-light/solutions/react-ts){:target="_blank"} |
-| [Whack a Mole](/problems/whack-a-mole/) | Medium | ✅ | ✅ | ✅ | [Live Demo](https://frontendpractice.hmellahi.me/challenge/user-interface/whack-a-mole){:target="_blank"} | [Solution](../frontend-challenges/problems/whack-a-mole/solutions/react-ts){:target="_blank"} |
-| [File Explorer](/problems/file-explorer/) | Medium | ✅ | ✅ | ✅ | [Live Demo](https://frontendpractice.hmellahi.me/challenge/user-interface/file-explorer){:target="_blank"} | [Solution](../frontend-challenges/problems/file-explorer/solutions/react-ts){:target="_blank"} |
-| [Wordle Game](/problems/wordle-game/) | Hard | ✅ | ✅ | ✅ | [Live Demo](https://frontendpractice.hmellahi.me/challenge/user-interface/wordle-game){:target="_blank"} | [Solution](../frontend-challenges/problems/wordle-game/solutions/react-ts){:target="_blank"} |
-| [Twitter like](/problems/twitter-like/) | Medium | ✅ | ✅ | ✅ | [Live Demo](https://frontendpractice.hmellahi.me/challenge/user-interface/twitter-like){:target="_blank"} | [Solution](../frontend-challenges/problems/twitter-like/solutions/react-ts){:target="_blank"} |
-| [Twitter like II](/problems/twitter-like-II/) | Medium | - | - | - | [Live Demo](https://frontendpractice.hmellahi.me/challenge/user-interface/twitter-like-II){:target="_blank"} | [Solution](../frontend-challenges/problems/twitter-like-II/solutions/react-ts){:target="_blank"} |
+| Title                                                                                            | Difficulty | Completed | Accessible | Reviewed | Solution                                                 |
+| ------------------------------------------------------------------------------------------------ | ---------- | --------- | ---------- | -------- | -------------------------------------------------------- |
+| [Traffic light](https://frontendpractice.hmellahi.me/challenge/user-interface/traffic-light)     | Easy       | ✅        | ✅         | ✅       | [Solution](/problems/traffic-light/solutions/react-ts)   |
+| [Whack a Mole](https://frontendpractice.hmellahi.me/challenge/user-interface/whack-a-mole)       | Medium     | ✅        | ✅         | ✅       | [Solution](/problems/whack-a-mole/solutions/react-ts)    |
+| [File Explorer](https://frontendpractice.hmellahi.me/challenge/user-interface/file-explorer)     | Medium     | ✅        | ✅         | ✅       | [Solution](/problems/file-explorer/solutions/react-ts)   |
+| [Wordle Game](https://frontendpractice.hmellahi.me/challenge/user-interface/wordle-game)         | Hard       | ✅        | ✅         | ✅       | [Solution](/problems/wordle-game/solutions/react-ts)     |
+| [Twitter like](https://frontendpractice.hmellahi.me/challenge/user-interface/twitter-like)       | Medium     | ✅        | ✅         | ✅       | [Solution](/problems/twitter-like/solutions/react-ts)    |
+| [Twitter like II](https://frontendpractice.hmellahi.me/challenge/user-interface/twitter-like-II) | Medium     | -         | -          | -        | [Solution](/problems/twitter-like-II/solutions/react-ts) |
 
 </p>
 
@@ -44,31 +44,31 @@ Each challenge includes:
 
   <p align="center">
 
-| Title | Difficulty | Topic | Link |
-| --- | --- | --- | --- |
-| [To Be Or Not To Be](https://leetcode.com/problems/to-be-or-not-to-be/description/){:target="_blank"} | Easy | Closures | - |
-| [Array Reduce Transformation](https://leetcode.com/problems/array-reduce-transformation/description/){:target="_blank"} | Easy | Basic Array Transformations | - |
-| [Function Composition](https://leetcode.com/problems/function-composition/description/){:target="_blank"} | Easy | Function Transformations | - |
-| [Return Length of Arguments Passed](https://leetcode.com/problems/return-length-of-arguments-passed/description/){:target="_blank"} | Easy | Function Transformations | - |
-| [Allow One Function Call](https://leetcode.com/problems/allow-one-function-call/description/){:target="_blank"} | Easy | Function Transformations | - |
-| [Memoize](https://leetcode.com/problems/memoize/description/){:target="_blank"} | Medium | Function Transformations | - |
-| [Calculator with Method Chaining](https://leetcode.com/problems/calculator-with-method-chaining/description/){:target="_blank"} | Easy | Classes | - |
-| [Add Two Promises](https://leetcode.com/problems/add-two-promises/description/){:target="_blank"} | Easy | Promises and Time | - |
-| [Sleep](https://leetcode.com/problems/sleep/description/){:target="_blank"} | Easy | Promises and Time | - |
-| [Timeout Cancellation](https://leetcode.com/problems/timeout-cancellation/description/){:target="_blank"} | Easy | Promises and Time | - |
-| [Interval Cancellation](https://leetcode.com/problems/interval-cancellation/description/){:target="_blank"} | Easy | Promises and Time | - |
-| [Promise Time Limit](https://leetcode.com/problems/promise-time-limit/description/){:target="_blank"} | Medium | Promises and Time | - |
-| [Cache With Time Limit](https://leetcode.com/problems/cache-with-time-limit/description/){:target="_blank"} | Medium | Promises and Time | - |
-| [Debounce](https://leetcode.com/problems/debounce/description/){:target="_blank"} | Medium | Promises and Time | - |
-| [Execute Asynchronous Functions in Parallel](https://leetcode.com/problems/execute-asynchronous-functions-in-parallel/description/){:target="_blank"} | Medium | Promises and Time | - |
-| [Is Object Empty](https://leetcode.com/problems/is-object-empty/description/){:target="_blank"} | Easy | JSON | - |
-| [Chunk Array](https://leetcode.com/problems/chunk-array/description/){:target="_blank"} | Easy | JSON | - |
-| [Array Prototype Last](https://leetcode.com/problems/array-prototype-last/description/){:target="_blank"} | Easy | JSON | - |
-| [Group By](https://leetcode.com/problems/group-by/description/){:target="_blank"} | Medium | JSON | - |
-| [Sort By](https://leetcode.com/problems/sort-by/description/){:target="_blank"} | Easy | JSON | - |
-| [Join Two Arrays by ID](https://leetcode.com/problems/join-two-arrays-by-id/description/){:target="_blank"} | Medium | JSON | - |
-| [Flatten Deeply Nested Array](https://leetcode.com/problems/flatten-deeply-nested-array/description/){:target="_blank"} | Medium | JSON | - |
-| [Compact Object](https://leetcode.com/problems/compact-object/description/){:target="_blank"} | Medium | JSON | - |
+| Title                                                                                                                               | Difficulty | Topic                       | Link |
+| ----------------------------------------------------------------------------------------------------------------------------------- | ---------- | --------------------------- | ---- |
+| [To Be Or Not To Be](https://leetcode.com/problems/to-be-or-not-to-be/description/)                                                 | Easy       | Closures                    | -    |
+| [Array Reduce Transformation](https://leetcode.com/problems/array-reduce-transformation/description/)                               | Easy       | Basic Array Transformations | -    |
+| [Function Composition](https://leetcode.com/problems/function-composition/description/)                                             | Easy       | Function Transformations    | -    |
+| [Return Length of Arguments Passed](https://leetcode.com/problems/return-length-of-arguments-passed/description/)                   | Easy       | Function Transformations    | -    |
+| [Allow One Function Call](https://leetcode.com/problems/allow-one-function-call/description/)                                       | Easy       | Function Transformations    | -    |
+| [Memoize](https://leetcode.com/problems/memoize/description/)                                                                       | Medium     | Function Transformations    | -    |
+| [Calculator with Method Chaining](https://leetcode.com/problems/calculator-with-method-chaining/description/)                       | Easy       | Classes                     | -    |
+| [Add Two Promises](https://leetcode.com/problems/add-two-promises/description/)                                                     | Easy       | Promises and Time           | -    |
+| [Sleep](https://leetcode.com/problems/sleep/description/)                                                                           | Easy       | Promises and Time           | -    |
+| [Timeout Cancellation](https://leetcode.com/problems/timeout-cancellation/description/)                                             | Easy       | Promises and Time           | -    |
+| [Interval Cancellation](https://leetcode.com/problems/interval-cancellation/description/)                                           | Easy       | Promises and Time           | -    |
+| [Promise Time Limit](https://leetcode.com/problems/promise-time-limit/description/)                                                 | Medium     | Promises and Time           | -    |
+| [Cache With Time Limit](https://leetcode.com/problems/cache-with-time-limit/description/)                                           | Medium     | Promises and Time           | -    |
+| [Debounce](https://leetcode.com/problems/debounce/description/)                                                                     | Medium     | Promises and Time           | -    |
+| [Execute Asynchronous Functions in Parallel](https://leetcode.com/problems/execute-asynchronous-functions-in-parallel/description/) | Medium     | Promises and Time           | -    |
+| [Is Object Empty](https://leetcode.com/problems/is-object-empty/description/)                                                       | Easy       | JSON                        | -    |
+| [Chunk Array](https://leetcode.com/problems/chunk-array/description/)                                                               | Easy       | JSON                        | -    |
+| [Array Prototype Last](https://leetcode.com/problems/array-prototype-last/description/)                                             | Easy       | JSON                        | -    |
+| [Group By](https://leetcode.com/problems/group-by/description/)                                                                     | Medium     | JSON                        | -    |
+| [Sort By](https://leetcode.com/problems/sort-by/description/)                                                                       | Easy       | JSON                        | -    |
+| [Join Two Arrays by ID](https://leetcode.com/problems/join-two-arrays-by-id/description/)                                           | Medium     | JSON                        | -    |
+| [Flatten Deeply Nested Array](https://leetcode.com/problems/flatten-deeply-nested-array/description/)                               | Medium     | JSON                        | -    |
+| [Compact Object](https://leetcode.com/problems/compact-object/description/)                                                         | Medium     | JSON                        | -    |
 
 </p>
 
