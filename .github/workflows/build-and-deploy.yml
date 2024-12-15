@@ -16,15 +16,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
-      # Uncomment and configure AWS credentials if needed
-      # - name: Configure AWS credentials
-      #   uses: aws-actions/configure-aws-credentials@v1
-      #   with:
-      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      #     aws-region: us-east-1
-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -51,9 +42,6 @@ jobs:
               if npm ci && npm run build; then
                 echo "$problem_name build succeeded"
                 success_problems+=("$problem_name")
-
-                # Uncomment and configure S3 sync if needed
-                # aws s3 sync build/ s3://your-bucket-name/$problem_name/ --delete
               else
                 echo "$problem_name build failed"
                 failed_problems+=("$problem_name")
@@ -69,17 +57,10 @@ jobs:
           echo "| Challenge Name | Demo | Status |" >> $GITHUB_STEP_SUMMARY
           echo "|----------------|------|--------|" >> $GITHUB_STEP_SUMMARY
 
-          base_url="https://frontendproblems.vercel.app"
-
           for problem in "${success_problems[@]}"; do
-            echo "| $problem | [Link]($base_url/$problem) | ✅ |" >> $GITHUB_STEP_SUMMARY
+            echo "| $problem | ✅ |" >> $GITHUB_STEP_SUMMARY
           done
 
           for problem in "${failed_problems[@]}"; do
             echo "| $problem | - | ❌ |" >> $GITHUB_STEP_SUMMARY
           done
-
-      # Uncomment and configure CloudFront invalidation if needed
-      # - name: Invalidate CloudFront
-      #   run: |
-      #     aws cloudfront create-invalidation --distribution-id YOUR_DISTRIBUTION_ID --paths "/*"
