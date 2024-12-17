@@ -1,16 +1,16 @@
 # Frontend Challenges
 
-This repo contains frontend challenges to help developers improve problem-solving skills and create performant and accessible UIs.
+This repo contains frontend and javascript challenges to help developers improve problem-solving skills and create performant and accessible UIs.
 
-Each challenge includes:
+Each UI challenge has:
 
 - Requirements
 - Solution in React with TypeScript.
-- Live demo (Coming soon)
+- Live demo
 
 ## Table of Contents
 
-- [Frontend Challenges (WORK IN PROGRESS)](#frontend-challenges-work-in-progress)
+- [Frontend Challenges](#frontend-challenges-work-in-progress)
   - [Table of Contents](#table-of-contents)
   - [Problems](#problems)
     - [User Interface problems](#user-interface-problems)
