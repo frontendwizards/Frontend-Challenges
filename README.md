@@ -79,20 +79,35 @@ Each UI challenge has:
 
 ## Getting Started
 
-If you wanna work with React, you can use the starter template.
+Let's say you want to work on the traffic light challenge.
 
-Just run this command:
+You can create a new project or use our CLI tool to use the starter template.
 
+### First Time Setup
 ```bash
-syntax: challenge-cli start $PROBLEM_NAME $PROJECT_NAME
-# $PROJECT_PATH default value is your github username or 'my-solution'
-
-# Example 1
-challenge-cli start twitter-like
-
-# Example 2
-challenge-cli start twitter-like my-solution
+# Clone repository and setup CLI tool (only needed once)
+git clone https://github.com/frontendwizards/frontend-challenges.git
+cd frontend-challenges/challenge-cli
+npm install
+npm link
 ```
+
+### Start Working
+```bash
+# Navigate to repository
+cd frontend-challenges
+
+# Create new project from template (run it at the root of the repository)
+challenge-cli start "traffic-light"
+
+# Navigate to project and start development
+cd problems/traffic-light/solutions/my-solution
+npm install
+npm run dev
+```
+
+> [!NOTE]
+> The starter template includes React and necessary tooling to get you started quickly.
 
 ## How to Check if Your Solution (UI) Is Accessible
 
@@ -134,14 +149,7 @@ If you wanna work with React, you can use the starter template.
 if you can create a new problem, use the create command:
 
 ```bash
-syntax: challenge-cli create $PROBLEM_NAME $PROJECT_NAME
-# $PROJECT_PATH default value is 'problems'
-
-# Example 1
 challenge-cli create new-problem
-
-# Example 2
-challenge-cli create new-problem problems-folder
 ```
 
 ## Coding Standards
