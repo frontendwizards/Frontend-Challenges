@@ -30,17 +30,18 @@ function startChallenge(problemName, projectName) {
   }
 
   // Determine project name
-  let finalProjectName = projectName;
-  if (!finalProjectName) {
-    try {
-      finalProjectName = execSync("git config user.name")
-        .toString()
-        .trim()
-        .split("@")[0];
-    } catch (error) {
-      finalProjectName = "my-solution";
-    }
-  }
+  const finalProjectName = "my-solution";
+  // let finalProjectName = projectName;
+  // if (!finalProjectName) {
+  //   try {
+  //     finalProjectName = execSync("git config user.name")
+  //       .toString()
+  //       .trim()
+  //       .split("@")[0];
+  //   } catch (error) {
+  //     finalProjectName = "my-solution";
+  //   }
+  // }
 
   // Create solution directory
   const solutionPath = path.join(problemPath, "solutions", finalProjectName);

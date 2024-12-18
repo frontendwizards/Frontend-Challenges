@@ -84,7 +84,7 @@ const App: FC = () => {
   const timeLeft = GAME_DURATION - Math.ceil(timer);
 
   return (
-    <main className=" flex h-full min-h-[100vh] flex-col items-center !bg-[#5e8484] p-2 pt-10 text-white">
+    <main className="flex h-full min-h-[100vh] flex-col items-center !bg-[#5e8484] p-2 pt-10 text-white">
       <div className="w-[60rem] uppercase">
         <div className="flex h-10 w-full items-center justify-around">
           <span className="text-2xl font-bold">Score : {score}</span>
