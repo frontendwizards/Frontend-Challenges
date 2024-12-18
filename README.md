@@ -87,22 +87,27 @@ You can create a new project or use our CLI tool to use the starter template.
 ```bash
 # Clone repository and setup CLI tool (only needed once)
 git clone https://github.com/frontendwizards/frontend-challenges.git
+
 cd frontend-challenges/challenge-cli
+
 npm install
+
 npm link
 ```
 
 ### Start Working
 ```bash
-# Navigate to repository
-cd frontend-challenges
+# Navigate to the root of the repository
+cd ..
 
 # Create new project from template (run it at the root of the repository)
 challenge-cli start "traffic-light"
 
 # Navigate to project and start development
 cd problems/traffic-light/solutions/my-solution
+
 npm install
+
 npm run dev
 ```
 
