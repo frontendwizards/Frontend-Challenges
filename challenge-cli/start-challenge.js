@@ -2,6 +2,14 @@ const fs = require("fs");
 const path = require("path");
 const { execSync } = require("child_process");
 
+function getNextSolutionNumber(basePath) {
+  let counter = 1;
+  while (fs.existsSync(`${basePath}-${counter}`)) {
+    counter++;
+  }
+  return counter;
+}
+
 function startChallenge(problemName, projectName) {
   if (!problemName) {
     console.error("Error: $PROBLEM_NAME is not provided");
@@ -32,20 +40,15 @@ function startChallenge(problemName, projectName) {
   // Determine project name
   const finalProjectName = projectName || "my-solution";
 
-  // let finalProjectName = projectName;
-  // if (!finalProjectName) {
-  //   try {
-  //     finalProjectName = execSync("git config user.name")
-  //       .toString()
-  //       .trim()
-  //       .split("@")[0];
-  //   } catch (error) {
-  //     finalProjectName = "my-solution";
-  //   }
-  // }
-
   // Create solution directory
-  const solutionPath = path.join(problemPath, "solutions", finalProjectName);
+  let solutionPath = path.join(problemPath, "solutions", finalProjectName);
+  
+  // If solution directory exists, add a number suffix
+  if (fs.existsSync(solutionPath)) {
+    const nextNumber = getNextSolutionNumber(solutionPath);
+    solutionPath = `${solutionPath}-${nextNumber}`;
+  }
+  
   fs.mkdirSync(solutionPath, { recursive: true });
 
   // Copy starter to solution directory
