@@ -121,13 +121,13 @@ const App: FC = () => {
               >
                 <img
                   alt="mole head"
-                  src="https://www.greatfrontend.com/img/questions/whack-a-mole/mole-head.png"
+                  src="/assets/mole-head.png"
                 />
               </button>
               <img
                 alt="mole hill"
                 className="absolute bottom-[-1.69rem]"
-                src="https://www.greatfrontend.com/img/questions/whack-a-mole/mole-hill.png"
+                src="/assets/mole-hill.png"
               />
             </div>
           ))}

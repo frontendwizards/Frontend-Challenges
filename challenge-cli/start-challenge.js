@@ -2,28 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const { execSync } = require("child_process");
 
-function validateProjectRoot() {
-  const problemsPath = path.join(process.cwd(), "problems");
-  if (!fs.existsSync(problemsPath)) {
-    console.warn(`
-\x1b[38;5;208m⚠️  Warning: You appear to be running the CLI outside the project root.
-  Recommended usage: Run this CLI from the root of the project.
-
-  Expected directory structure:
-  /frontend-challenges
-  ├── problems/
-  ├── starter/
-  └── challenge-cli/
-
-  Current working directory: ${process.cwd()}\x1b[0m
-`);
-    // Optionally, you can choose to exit or continue
-    process.exit(1);
-  }
-}
 function startChallenge(problemName, projectName) {
-  validateProjectRoot();
-
   if (!problemName) {
     console.error("Error: $PROBLEM_NAME is not provided");
     process.exit(1);
@@ -51,7 +30,8 @@ function startChallenge(problemName, projectName) {
   }
 
   // Determine project name
-  const finalProjectName = "my-solution";
+  const finalProjectName = projectName || "my-solution";
+
   // let finalProjectName = projectName;
   // if (!finalProjectName) {
   //   try {

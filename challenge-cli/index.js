@@ -3,6 +3,7 @@
 const { program } = require("commander");
 const { startChallenge } = require("./start-challenge");
 const { createChallenge } = require("./create-challenge");
+const { validateProjectRoot } = require("./utils");
 // const { listChallenges } = require("./list-challenges");
 
 program
@@ -13,6 +14,7 @@ program
   .command("create <challengeName> [challengePath]")
   .description("Create a new challenge")
   .action((challengeName, challengePath) => {
+    validateProjectRoot();
     console.log(`Creating new challenge: ${challengeName}`);
     const solutionPath = createChallenge(challengeName, challengePath);
     console.log(
@@ -24,6 +26,7 @@ program
   .command("start <challengeName> [solutionName]")
   .description("Start working on a challenge")
   .action((challengeName, solutionName) => {
+    validateProjectRoot();
     console.log(`Starting challenge: ${challengeName}`);
     const solutionPath = startChallenge(challengeName, solutionName);
     console.log(
@@ -35,6 +38,7 @@ program
   .command("list")
   .description("List all available challenges")
   .action(() => {
+    validateProjectRoot();
     console.log("Available challenges:");
     // listChallenges();
   });
