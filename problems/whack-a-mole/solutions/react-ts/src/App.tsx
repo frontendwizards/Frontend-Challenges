@@ -84,54 +84,52 @@ const App: FC = () => {
   const timeLeft = GAME_DURATION - Math.ceil(timer);
 
   return (
-    <main className="flex h-full min-h-[100vh] flex-col items-center !bg-[#5e8484] p-2 pt-10 text-white">
-      <div className="w-[60rem] uppercase">
-        <div className="flex h-10 w-full items-center justify-around">
-          <span className="text-2xl font-bold">Score : {score}</span>
-          <div className="w-[10rem] text-center">
-            {isGameOver && (
-              <button
-                onClick={startGame}
-                className="w-[10rem] rounded-lg bg-white p-3 text-xl font-bold uppercase text-black shadow-md"
-              >
-                {isFirstRound ? "Start" : "Play Again"}
-              </button>
-            )}
-          </div>
-          <span className="text-left text-2xl font-bold">
-            Time left : {timeLeft}
-          </span>
-        </div>
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-x-10">
-          {gameGrid.map((spot, index) => (
-            <div
-              key={index}
-              className="relative h-[12rem] flex-[0_1_25%] overflow-hidden"
+    <main className="flex h-full min-h-[100vh] flex-col items-center p-2 pt-10 text-white w-[60rem] uppercase">
+      <div className="flex h-10 w-full items-center justify-around">
+        <span className="text-2xl font-bold">Score : {score}</span>
+        <div className="w-[10rem] text-center">
+          {isGameOver && (
+            <button
+              onClick={startGame}
+              className="w-[10rem] rounded-lg bg-white p-3 text-xl font-bold uppercase text-black shadow-md"
             >
-              <button
-                tabIndex={-1}
-                aria-label={`Mole ${index + 1}`}
-                onClick={() => catchHole(index)}
-                className={cn([
-                  "h-40 w-40 translate-x-[15%] translate-y-[100%] select-none duration-100 ease-in",
-                  {
-                    "translate-y-[20%]": spot === 1,
-                  },
-                ])}
-              >
-                <img
-                  alt="mole head"
-                  src="https://pub-473edaec9c9b416fb6c35c8854296a05.r2.dev/mole-head.png"
-                />
-              </button>
-              <img
-                alt="mole hill"
-                className="absolute bottom-[-1.69rem]"
-                src="https://pub-473edaec9c9b416fb6c35c8854296a05.r2.dev/mole-hill.png"
-              />
-            </div>
-          ))}
+              {isFirstRound ? "Start" : "Play Again"}
+            </button>
+          )}
         </div>
+        <span className="text-left text-2xl font-bold">
+          Time left : {timeLeft}
+        </span>
+      </div>
+      <div className="mt-10 flex flex-wrap items-center justify-center gap-x-10 pb-20">
+        {gameGrid.map((spot, index) => (
+          <div
+            key={index}
+            className="relative h-[12rem] flex-[0_1_25%] overflow-hidden"
+          >
+            <button
+              tabIndex={-1}
+              aria-label={`Mole ${index + 1}`}
+              onClick={() => catchHole(index)}
+              className={cn([
+                "h-40 w-40 translate-x-[15%] translate-y-[100%] select-none duration-100 ease-in",
+                {
+                  "translate-y-[20%]": spot === 1,
+                },
+              ])}
+            >
+              <img
+                alt="mole head"
+                src="https://pub-473edaec9c9b416fb6c35c8854296a05.r2.dev/mole-head.png"
+              />
+            </button>
+            <img
+              alt="mole hill"
+              className="absolute bottom-[-1.69rem]"
+              src="https://pub-473edaec9c9b416fb6c35c8854296a05.r2.dev/mole-hill.png"
+            />
+          </div>
+        ))}
       </div>
     </main>
   );
