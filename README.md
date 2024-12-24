@@ -106,8 +106,6 @@ challenge-cli start "traffic-light"
 # Navigate to project and start development
 cd problems/traffic-light/solutions/my-solution
 
-npm install
-
 npm run dev
 ```
 
